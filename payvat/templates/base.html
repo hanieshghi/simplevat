@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'style/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'style/page-style.css' %}">
+    <title>Drug Supply Chain</title>
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <div id="logo_container" class="row col-12 justify-content-end ">
+            <img id="img_logo" class="" src="{% static 'images/1.jpg' %}" alt="logo">
+        </div>
+        <div class="row main_section border-top">
+            <div class="col-12">
+                <nav>
+                    <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                        {% csrf_token %}
+                        <a class="nav-item nav-link active" id="nav-my-role-tab" data-toggle="tab" href="#nav-my-role" role="tab" aria-controls="nav-my-role" aria-selected="true">مشخصات حساب</a>
+                        <a class="nav-item nav-link" id="nav-drug-design-tab" data-toggle="tab" href="#nav-drug-design" role="tab" aria-controls="nav-drug-design" aria-selected="true">طراحی دارو</a>
+                        <a class="nav-item nav-link" id="nav-drug-load-tab" data-toggle="tab" href="#nav-drug-load" role="tab" aria-controls="nav-drug-load" aria-selected="true">بار دارو</a>
+                        <a class="nav-item nav-link" id="nav-drug-tab" data-toggle="tab" href="#nav-drug" role="tab" aria-controls="nav-drug" aria-selected="true">خرید دارو</a>
+                        <a class="nav-item nav-link" id="nav-fetch-data-tab" data-toggle="tab" href="#nav-fetch-data" role="tab" aria-controls="nav-fetch-data" aria-selected="true">بازیابی اطلاعات</a>
+                    </div>
+                </nav>
+
+                {% block content %} {% endblock %}
+
+            </div>
+        </div>
+        <div class="row col-12">
+            <textarea name="log_area" id="log_area" class="col-12 text-left input-group border border-info" rows="8" readonly>
+                System Logs
+                Connected Network: {{network}}
+                Connected Account: {{conn}}
+            </textarea>
+        </div>
+    </div>
+    <script src="{% static 'scripts/jquery.js' %}"></script>
+    <script src="{% static 'scripts/bootstrap.bundle.js' %}"></script>
+    <script src="{% static 'scripts/site-script.js' %}"></script>
+
+</body>
+
+</html>

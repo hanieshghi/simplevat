@@ -2,7 +2,7 @@ pragma solidity ^0.5.0;
 
 /// Import main chains contracts
 import "./Product.sol";
-import "./ProductDesign.sol";
+//import "./ProductDesign.sol";
 
 /// Import Main Roles contract `Rolable.sol`
 import "./AccessControl/Rolable.sol";
@@ -11,14 +11,21 @@ import "./AccessControl/Rolable.sol";
 import "./openzeppelin/contracts/lifecycle/Pausable.sol";
 
 /// @title Supply Chain Contract
-contract SupplyChain is Rolable, Pausable, ProductDesign, Product {
-    address payable public taxCollector  ;
+contract SupplyChain is Rolable, Pausable, Product {
+    address payable public taxCollector = "0xe6A6e82C8CADd8Be78Eb77acb5c05A424d0E0AF0" ;
     constructor() public {
 
     }
 
+    function manufacturDrugsLoud(uint _price, uint _tax, string memory _name)
+        public
+        onlyManufacturer()
+    {
+        super.manufacturDrugsLoud(_udpc, quantity);
+    }
+
     /// Function helps Designer to estaplish a new Product Design
-    function designProduct(
+    /*function designProduct(
         string memory _designerName,
         string memory _ProductName,
         string memory _description,
@@ -34,29 +41,14 @@ contract SupplyChain is Rolable, Pausable, ProductDesign, Product {
             _description,
             _notes
         );
-    }
+    }*?
 
 
     /// Function to purchase a Product design
-    function purchaseProductDesign(uint _udpc)
-        public
-        payable
-        onlyManufacturer()
-    {
-        super.purchaseProductDesign(_udpc);
-    }
-
-    /// Function helps manufacturer to manufactur a new Product Loud
-    function manufacturProductsLoud(uint _udpc, uint quantity)
-        public
-        onlyManufacturer()
-    {
-        super.manufacturProductsLoud(_udpc, quantity);
-    }
 
 
 
-    function buyProductsLoud(uint _slu)
+    /*function buyProductsLoud(uint _slu)
         public
         payable
         onlyBuyer() // خریدار عمده
@@ -87,21 +79,21 @@ contract SupplyChain is Rolable, Pausable, ProductDesign, Product {
         sallerId.transfer(totalPrice - totalTaxBounty);
         taxCollector.transfer(totalTaxBounty);
         
-    }
+    }*/
 
     /// Function helps manufacturer to Pack a isManufactured Product Loud
-    function purchaseProduct (uint _pku)
+    function purchaseProduct (uint _pID)
         public
         payable
         onlyBuyer()
         whenNotPaused()
     {
-        uint price = pItems[_pku].price;
-        address payable sellerId = pItems[_pku].currentOwnerId;
+        uint price = pItems[_pID].price;
+        address payable sellerId = pItems[_pID].currentOwnerId;
 
-        //address payable retailerId = address(uint160(pItems[_pku].sellerId));
+        //address payable retailerId = address(uint160(pItems[_pID].sellerId));
         //uint retialerBounty = (price*5) /100;
-        uint lastTax = pItems[_pku].taxHistory[pItems[_pku].taxUpdateCounter].lastPaidTax ; 
+        uint lastTax = pItems[_pID].taxHistory[pItems[_pID].taxUpdateCounter].lastPaidTax ; 
         uint taxBounty = (price*9) /100 - lastTax ; 
 
         require(msg.value >= price+(price*9) /100, "Not Enough!");
@@ -109,8 +101,8 @@ contract SupplyChain is Rolable, Pausable, ProductDesign, Product {
         if (amountToReturn != 0)
             address(msg.sender).transfer(amountToReturn);
 
-        super.purchaseProduct(_pku);
-        //super.updateTaxHistory(_pku,taxBounty);
+        super.purchaseProduct(_pID);
+        //super.updateTaxHistory(_pID,taxBounty);
         sellerId.transfer(price + lastTax);
         taxCollector.transfer(taxBounty);
     }

@@ -73,27 +73,10 @@ contract ProductDesign {
         _;
     }
 
-    /// Modifier that checks if an ProductDesignItem.state of a udpc is Tested
-    modifier isTested(uint _udpc) {
-        require(pDItems[_udpc].state == ProductDesignState.Tested);
-        _;
-    }
-
-    /// Modifier that checks if an ProductDesignItem.state of a udpc is Approved
-    modifier isApproved(uint _udpc) {
-        require(pDItems[_udpc].state == ProductDesignState.Approved);
-        _;
-    }
 
     /// Modifier that checks if the caller he is the currentOwner of Product Design
     modifier onlyOwnerOf(uint _udpc) {
         require(pDItems[_udpc].currentOwner == msg.sender);
-        _;
-    }
-
-    /// Modifier that checks if the caller he is the currentOwner of Product Design
-    modifier ProductDesignForSale(uint _udpc) {
-        require(pDItems[_udpc].state == ProductDesignState.ForSale);
         _;
     }
 
@@ -194,18 +177,6 @@ contract ProductDesign {
         emit UpForSale(_udpc);
     }
 
-    /// Function to purchase a Product design
-    function purchaseProductDesign(uint _udpc)
-        public
-        payable
-        ProductDesignForSale(_udpc)
-        checkProductDesignPaymentValue(_udpc)
-    {
-        pDItems[_udpc].state = ProductDesignState.Approved;
-        pDItems[_udpc].currentOwner = msg.sender;
-
-        emit ProductDesignPurchased(_udpc);
-    }
 
     function fetchProductDesignData(uint _udpc) 
         external 
@@ -261,27 +232,6 @@ contract ProductDesign {
             pDItems[_udpc].metaData.notes
         );
     }
-
-    function featchProductDesignTestCases(uint _udpc, uint _testIndex) 
-        external
-        view
-        returns(
-            string memory description,
-            bool isPassed, 
-            string  memory notes
-        )
-    {
-        require(_udpc <= udpc, 'Given UDPC Not Created Yet!');
-        require(_testIndex < pDItems[_udpc].testIndexed, 'Test Case Not Created Yet!');
-        
-        (description, isPassed, notes) = (
-            pDItems[_udpc].testCases[_testIndex].description,
-            pDItems[_udpc].testCases[_testIndex].isPassed,
-            pDItems[_udpc].testCases[_testIndex].notes
-        );
-        
-    }
-
 
 
 }

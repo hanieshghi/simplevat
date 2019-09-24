@@ -1,0 +1,446 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="tab-content" id="nav-tabContent">
+    <!-- This is for My Information Section -->
+    <div class="tab-pane fade show active" id="nav-my-role" role="tabpanel" aria-labelledby="nav-my-role-tab">
+        <div class="row col-12 justify-content-center">
+            <div class="col-4 border mt-4">
+                <div class="input-group col-12 mt-4 justify-content-center">
+                    <button class="btn btn-dark text-white col-11" id="who_am_i_btn">
+                        مشخصات کامل حساب
+                    </button>
+                </div>
+                <h3 class="h3 mt-5 col-11 text-info text-right">ثبت قانونگذار جدید</h3>
+                <p class="col-11 text-danger mt-4 text-right">فقط قانونگذار</p>
+                <div class="col-12 input-group mt-1 mb-4 justify-content-center">
+                    <input class="form-control col-8" type="text" name="regulator" id="submit_regulator_text" placeholder="قانونگذار" />
+                    <button class="btn btn-primary col-3 mr-2" id="regulator_submit_btn">
+                        ثبت
+                    </button>
+                </div>
+            </div>
+
+        </div>
+        <div class="row mt-5 col-12 justify-content-center">
+            <div id="consumers col-2">
+                <div class=" col-12">
+                    <button class="btn btn-primary col-12 mb-1" id="add-consumer">ثبت مصرف کننده</button>
+                </div>
+                <div class=" col-12">
+                    <button class="btn btn-primary col-12 mt-1" id="remove-consumer">حذف مصرف کننده</button>
+                </div>
+            </div>
+
+            <div id="retailers col-2">
+                <div class=" col-12">
+                    <button class="btn btn-primary col-12 mb-1" id="add-retailer">ثبت خرده فروش</button>
+                </div>
+                <div class=" col-12">
+                    <button class="btn btn-primary col-12 mt-1" id="remove-retailer">حذف خرده فروش</button>
+                </div>
+            </div>
+
+            <div id="distributor col-2">
+                <div class=" col-12">
+                    <button class="btn btn-primary col-12 mb-1" id="add-distributor">ثبت توزیع کننده</button>
+                </div>
+                <div class=" col-12">
+                    <button class="btn btn-primary col-12 mt-1" id="remove-distributor">حذف توزیع کننده</button>
+                </div>
+            </div>
+
+            <div id="manufactur col-2">
+                <div class=" col-12">
+                    <button class="btn btn-primary col-12 mb-1" id="add-manufactur">ثبت تولید کننده</button>
+                </div>
+                <div class=" col-12">
+                    <button class="btn btn-primary col-12 mt-1" id="remove-manufactur">حذف تولید کننده</button>
+                </div>
+            </div>
+
+            <div id="regulator col-2">
+                <div class=" col-12">
+                    <button class="btn btn-primary col-12 mb-1" id="add-regulator">ثبت قانونگذار</button>
+                </div>
+                <div class=" col-12">
+                    <button class="btn btn-primary col-12 mt-1" id="remove-regulator">حذف قانون گذار</button>
+                </div>
+            </div>
+
+            <div id="designer col-2">
+                <div class=" col-12">
+                    <button class="btn btn-primary col-12 mb-1" id="add-designer">ثبت طراح</button>
+                </div>
+                <div class=" col-12">
+                    <button class="btn btn-primary col-12 mt-1" id="remove-designer">حذف طراح</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- This Section is for Drug Design -->
+    <div class="tab-pane fade" id="nav-drug-design" role="tabpanel" aria-labelledby="nav-drug-design-tab">
+        <div class="row col-12 justify-content-center">
+            <!-- Add New Drug Design -->
+            <div class="col-5 justify-content-center border m-2 bg-light" id="add_drug_design_section">
+                <h3 class="h3 text-right mt-3">ثبت طرح دارو</h3>
+                <p class="text-danger text-right">فقط طراح</p>
+                <div class=" row col-12 input-group mt-3 justify-content-center">
+                    <input class="form-control col-5 mr-1 ml-1 mt-2 mb-2" type="text" name="designer_name" id="designer_name_subimt" placeholder="نام طراح" />
+                    <input class="form-control col-5 mr-1 ml-1 mt-2 mb-2" type="text" name="drug_name" id="drug_name_subimt" placeholder="نام دارو" />
+                </div>
+                <div class=" row col-12  justify-content-center input-group">
+                    <textarea class="col-10 form-control" name="drug_design_description" id="drug_design_description" rows="5" placeholder="توضیحات"></textarea>
+                </div>
+                <div class=" row col-12  justify-content-center input-group mt-2">
+                    <textarea class="col-10 form-control" name="drug_design_note" id="drug_design_note" rows="5" placeholder="یادداشت"></textarea>
+                </div>
+                <div class="row col-6 justify-content-center input-group mt-2">
+                    <button class="col-8 btn btn-success ml-2 mt-3 mb-2 text-light " id="drug-design-btn">
+                        ثبت طرح دارو
+                    </button>
+                </div>
+            </div>
+            <!-- Add Drug Test Section -->
+            <div class="col-5 justify-content-center border m-2 bg-light" id="add_drug_test_section">
+                <h3 class="h3 text-right mt-3">ثبت نتیجه تست دارو</h3>
+                <p class="text-danger text-right">فقط قانونگذار یا مالک طرح</p>
+                <div class=" row col-12 input-group mt-3 justify-content-center">
+                    <input class="form-control col-10 mt-2 mb-2" type="text" name="udpc" id="udpc" placeholder="Universal Drug Product Code" />
+                </div>
+                <div class=" row col-12  justify-content-center input-group">
+                    <textarea class="col-10 form-control" name="drug_design_description" id="drug_design_description" rows="5" placeholder="توضیحات"></textarea>
+                </div>
+                <div class=" row col-3 form-check justify-content-center mt-2">
+
+                    <input class="form-check-input col-2 " type="checkbox" name="passed" id="passed_test_result" value="Passed" />
+                    <label for="passed_test_result" class="col-10 form-check-label ">تایید </label>
+
+                </div>
+                <div class=" row col-12  justify-content-center input-group mt-2">
+                    <textarea class="col-10 form-control" name="drug_design_note" id="drug_design_note" rows="5" placeholder="یادداشت"></textarea>
+                </div>
+                <div class="row col-12 justify-content-center input-group mt-2">
+                    <button class="btn btn-success ml-1 mt-3 mb-2 col-5 text-light " id="add_test_by_owner">
+                        ثبت آزمایش توسط مالک
+                    </button>
+                    <button class="btn btn-success mr-1 mt-3 mb-2 col-5 text-light " id="add_test_by_regulator">
+                        ثبت آزمایش توسط قانونگذار
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Seconde Row -->
+        <div class="row col-12 justify-content-center">
+            <!-- Approve Drugs -->
+
+            <div class="col-5 justify-content-center border m-2 bg-light" id="approve_drug_section">
+                <h3 class="h3 text-right mt-3">تاییدیه دارو</h3>
+                <p class="text-danger text-right">فقط قانونگذار</p>
+                <div class=" row col-12 input-group mt-3 justify-content-center">
+                    <input class="form-control col-10 mt-2 mb-2" type="text" name="udpc" id="udpc" placeholder="Universal Drug Product Code" />
+                </div>
+
+                <div class="row col-6 justify-content-center input-group mt-2">
+                    <button class="col-8 btn btn-success mt-2 mb-2 text-light " id="drug_approve">
+                        تایید دارو
+                    </button>
+                </div>
+            </div>
+            <!-- Sell Drug Design -->
+            <div class="col-5 justify-content-center border m-2 bg-light" id="sell_drug_design_section">
+                <h3 class="h3 text-right mt-3">فروش طرح دارو</h3>
+                <p class="text-danger text-right">فقط مالک طرح دارو</p>
+                <div class=" row col-12 input-group mt-3 justify-content-center">
+                    <input class="form-control col-5 ml-1 mt-2 mb-2" type="text" name="udpc" id="udpc" placeholder="Universal Drug Product Code" />
+                    <input class="form-control col-5 mr-1 mt-2 mb-2" type="text" name="price" id="price" placeholder="قیمت" />
+                </div>
+
+                <div class="row col-6 justify-content-center input-group mt-2">
+                    <button class="col-8 btn btn-success mt-2 mb-2 text-light " id="sell_drug">
+                        تایید برای فروش
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Third Row -->
+        <div class="row col-12 justify-content-center">
+            <!-- Buy Drug Design -->
+            <div class="col-5 justify-content-center border m-2 bg-light" id="buy_drug_design_section">
+                <h3 class="h3 text-right mt-3">خرید طرح دارو</h3>
+                <p class="text-danger text-right">فقط تولیدکننده یا طراح</p>
+                <div class=" row col-12 input-group mt-3 justify-content-center">
+                    <input class="form-control col-10 mt-2" type="text" name="udpc" id="udpc" placeholder="Universal Drug Product Code" />
+                </div>
+                <div class=" row col-12 input-group mt-3 justify-content-center">
+                    <input class="form-control col-10 mt-1 mb-2" type="text" name="price" id="price" placeholder="قیمت" />
+                </div>
+                <div class="row col-6 justify-content-center input-group mt-2">
+                    <button class="col-8 btn btn-success mt-2 mb-2 text-light " id="buy_drug">
+                        تایید خرید
+                    </button>
+                </div>
+            </div>
+            <!-- Update Manufacturer Partnership States -->
+            <div class="col-5 justify-content-center border m-2 bg-light" id="update_manufacturer_section">
+                <h3 class="h3 text-right mt-3"> بروزرسانی طرح شراکت در تولید</h3>
+                <p class="text-danger text-right">فقط مالک طرح دارو</p>
+                <div class=" row col-12 input-group mt-3 justify-content-center">
+                    <input class="form-control col-10 mt-2" type="text" name="udpc" id="udpc" placeholder="Universal Drug Product Code" />
+                </div>
+                <div class="row col-6 justify-content-center input-group mt-2">
+                    <button class="col-8 btn btn-success mt-2 mb-2 text-light " id="close_partnership">
+                        لغو شراکت
+                    </button>
+                </div>
+                <div class="row col-6 justify-content-center input-group mt-2">
+                    <button class="col-8 btn btn-success mt-2 mb-2 text-light " id="restrict_partnership">
+                        محدود کردن شراکت
+                    </button>
+                </div>
+                <div class=" row col-12 input-group mt-3 justify-content-center">
+                    <input class="form-control col-10 mt-1 mb-2" type="text" name="partnership_percent" id="partnership_percent" placeholder="درصد شراکت" />
+                </div>
+                <div class="row col-6 justify-content-center input-group mt-2">
+                    <button class="col-8 btn btn-success mt-2 mb-2 text-light " id="open_partnership">
+                        شروع شراکت
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Fourth Row -->
+        <div class="row col-12 justify-content-center">
+            <!-- Add Manufacture Partner -->
+            <div class="col-5 justify-content-center border m-2 bg-light" id="add_manufacture_partner">
+                <h3 class="h3 text-right mt-3"> طرح شراکت</h3>
+                <p class="text-danger text-right">فقط مالک طرح دارو وقتی طرح شراکت محدود باشد</p>
+                <div class=" row col-12 input-group mt-3 justify-content-center">
+                    <input class="form-control col-5 ml-1 mt-2 mb-2" type="text" name="udpc" id="udpc" placeholder="UDPC" />
+                    <input class="form-control col-5 mr-1 mt-2 mb-2" type="text" name="partner_address" id="partner_address" placeholder="آدرس شریک" />
+                </div>
+                <div class=" row col-12 input-group mt-3 justify-content-center">
+                    <input class="form-control col-5 ml-1 mt-2 mb-2" type="text" name="manufacture_name" id="manufacture_name" placeholder="نام تولید کننده" />
+                    <input class="form-control col-5 mr-1 mt-2 mb-2" type="text" name="partner_share" id="partner_share" placeholder="درصد شریک" />
+                </div>
+
+                <div class="row col-6 justify-content-center input-group mt-2">
+                    <button class="col-8 btn btn-success mt-2 mb-2 text-light " id="add_partner">
+                        اضافه کردن شریک
+                    </button>
+                </div>
+            </div>
+            <!-- Build Manufactur Partnership -->
+            <div class="col-5 justify-content-center border m-2 bg-light" id="build_manufactur_partnership">
+                <h3 class="h3 text-right mt-3">اضافه کردن شریک در تولید</h3>
+                <p class="text-danger text-right">فقط تولید کننده وقتی طرح شراکت محدود باشد</p>
+                <div class=" row col-12 input-group mt-3 justify-content-center">
+                    <input class="form-control col-5 ml-1 mt-2 mb-2" type="text" name="udpc" id="udpc" placeholder="UDPC" />
+                    <input class="form-control col-5 mr-1 mt-2 mb-2" type="text" name="manufacture_name" id="manufacture_name" placeholder="نام تولید کننده" />
+                </div>
+                <div class="row col-6 justify-content-center input-group mt-2">
+                    <button class="col-8 btn btn-success mt-2 mb-2 text-light " id="build_partnership">
+                        ایجاد شراکت
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- This Section is for Drug Loads -->
+    <div class="tab-pane fade" id="nav-drug-load" role="tabpanel" aria-labelledby="nav-drug-load-tab">
+        <!-- First Row -->
+        <div class="row col-12 justify-content-center">
+            <!-- Manufactur Drugs Load -->
+            <div class="col-5 justify-content-center border m-2 bg-light" id="manufactur_drugs_load">
+                <h3 class="h3 text-right mt-3">بار تولید کننده</h3>
+                <p class="text-danger text-right">فقط تولیدکننده، شریک، مالک یا طراح دارو</p>
+                <div class=" row col-12 input-group mt-3 justify-content-center">
+                    <input class="form-control col-5 ml-1 mt-2 mb-2" type="text" name="udpc" id="udpc" placeholder="UDPC " />
+                    <input class="form-control col-5 mr-1 mt-2 mb-2" type="text" name="quantity" id="quantity" placeholder="تعداد" />
+                </div>
+                <div class="row col-6 justify-content-center input-group mt-2">
+                    <button class="col-8 btn btn-success mt-2 mb-2 text-light " id="manufactur">
+                        تولید
+                    </button>
+                </div>
+            </div>
+            <!-- Pack Drugs Load -->
+            <div class="col-5 justify-content-center border m-2 bg-light" id="pack_drugs_load">
+                <h3 class="h3 text-right mt-3">بسته بندی بار دارو</h3>
+                <p class="text-danger text-right">فقط تولیدکننده بار دارو</p>
+                <div class=" row col-12 input-group mt-3 justify-content-center">
+                    <input class="form-control col-10 ml-1 mt-2 mb-2" type="text" name="slu" id="slu" placeholder="Stock Loading Unit" />
+                </div>
+                <div class="row col-6 justify-content-center input-group mt-2">
+                    <button class="col-8 btn btn-success mt-2 mb-2 text-light " id="pack">
+                        بسته بندی
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Seconde Row -->
+        <div class="row col-12 justify-content-center">
+            <!-- Sell Drugs Load -->
+            <div class="col-5 justify-content-center border m-2 bg-light" id="sell_drugs_load">
+                <h3 class="h3 text-right mt-3">فروش بار دارو</h3>
+                <p class="text-danger text-right">فقط تولیدکننده بار دارو</p>
+                <div class=" row col-12 input-group mt-3 justify-content-center">
+                    <input class="form-control col-5 ml-1 mt-2 mb-2" type="text" name="slu" id="slu" placeholder="Stock Loading Unit" />
+                    <input class="form-control col-5 mr-1 mt-2 mb-2" type="text" name="unit-price" id="unit-price" placeholder="قیمت واحد" />
+                </div>
+                <div class="row col-6 justify-content-center input-group mt-2">
+                    <button class="col-8 btn btn-success mt-2 mb-2 text-light " id="up-for-sale">
+                        آماده فروش
+                    </button>
+                </div>
+            </div>
+            <!-- Buy Drugs Loud -->
+            <div class="col-5 justify-content-center border m-2 bg-light" id="buy_drugs_loud">
+                <h3 class="h3 text-right mt-3">خرید بار دارو</h3>
+                <p class="text-danger text-right">فقط توزیع کننده</p>
+                <div class=" row col-12 input-group mt-3 justify-content-center">
+                    <input class="form-control col-5 ml-1 mt-2 mb-2" type="text" name="slu" id="slu" placeholder="Stock Loading Unit" />
+                    <input class="form-control col-5 mr-1 mt-2 mb-2" type="text" name="ether-value" id="ether_value" placeholder="قیمت به Ether" />
+                </div>
+                <div class=" row col-12 input-group mt-3 justify-content-center">
+                    <input class="form-control col-10 ml-1 mt-2 mb-2" type="text" name="retailer-address" id="retailer_address" placeholder="آدرس خرده فروش" />
+                </div>
+                <div class="row col-6 justify-content-center input-group mt-2">
+                    <button class="col-8 btn btn-success mt-2 mb-2 text-light " id="buy_load">
+                        خرید
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Third Row -->
+        <div class="row col-12 justify-content-center">
+            <!-- Ship Drugs Load -->
+            <div class="col-5 justify-content-center border m-2 bg-light" id="ship_drugs_load">
+                <h3 class="h3 text-right mt-3">تحویل دارو</h3>
+                <p class="text-danger text-right">فقط تولیدکننده بار دارو</p>
+                <div class=" row col-12 input-group mt-3 justify-content-center">
+                    <input class="form-control col-10 ml-1 mt-2 mb-2" type="text" name="slu" id="slu" placeholder="Stock Loading Unit" />
+                </div>
+                <div class="row col-6 justify-content-center input-group mt-2">
+                    <button class="col-8 btn btn-success mt-2 mb-2 text-light " id="ship">
+                        ارسال
+                    </button>
+                </div>
+            </div>
+            <!-- Receive Drugs Load -->
+            <div class="col-5 justify-content-center border m-2 bg-light" id="receive_drugs_load">
+                <h3 class="h3 text-right mt-3">دریافت دارو</h3>
+                <p class="text-danger text-right">فقط خرده فروش و در صورتیکه اطلاعات محیط تحویل بروز شده باشد</p>
+                <div class=" row col-12 input-group mt-3 justify-content-center">
+                    <input class="form-control col-10 ml-1 mt-2 mb-2" type="text" name="slu" id="slu" placeholder="Stock Loading Unit" />
+                </div>
+                <div class="row col-6 justify-content-center input-group mt-2">
+                    <button class="col-8 btn btn-success mt-2 mb-2 text-light " id="receive">
+                        دریافت
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fourth Row -->
+        <div class="row col-12 justify-content-center">
+            <!-- Update Shippment Envuirment -->
+            <div class="col-5 justify-content-center border m-2 bg-light" id="update-shippment-envuirment">
+                <h3 class="h3 text-right mt-3">بروزرسانی شرایط محیط تحویل دارو </h3>
+                <p class="text-danger text-right">فقط تولیدکننده یا توزیع کننده بار دارو</p>
+                <div class=" row col-12 input-group mt-3 justify-content-center">
+                    <input class="form-control col-4 ml-1 mt-2 mb-2" type="text" name="slu" id="slu" placeholder="Stock Loading Unit" />
+                    <input class="form-control col-3 ml-1 mt-2 mb-2" type="text" name="humidity" id="humidity" placeholder="رطوبت" />
+                    <input class="form-control col-3 ml-1 mt-2 mb-2" type="text" name="temperature" id="temperature" placeholder="دما" />
+                </div>
+                <div class="row col-6 justify-content-center input-group mt-2">
+                    <button class="col-8 btn btn-success mt-2 mb-2 text-light " id="add">
+                        تایید
+                    </button>
+                </div>
+            </div>
+            <!-- Update Stocking Envuirment -->
+            <div class="col-5 justify-content-center border m-2 bg-light" id="update-stocking-envuirment">
+                <h3 class="h3 text-right mt-3">بروزرسانی شرایط محیط فروش دارو </h3>
+                <p class="text-danger text-right">فقط خرده فروش بار دارو</p>
+                <div class=" row col-12 input-group mt-3 justify-content-center">
+                    <input class="form-control col-4 ml-1 mt-2 mb-2" type="text" name="slu" id="slu" placeholder="Stock Loading Unit" />
+                    <input class="form-control col-3 ml-1 mt-2 mb-2" type="text" name="humidity" id="humidity" placeholder="رطوبت" />
+                    <input class="form-control col-3 ml-1 mt-2 mb-2" type="text" name="temperature" id="temperature" placeholder="دما" />
+                </div>
+                <div class="row col-6 justify-content-center input-group mt-2">
+                    <button class="col-8 btn btn-success mt-2 mb-2 text-light " id="add">
+                        تایید
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- This Section is for Drugs -->
+    <div class="tab-pane fade" id="nav-drug" role="tabpanel" aria-labelledby="nav-drug-tab">
+        <div class="row col-12 justify-content-center">
+            <!-- Purchase Drug -->
+            <div class="col-5 justify-content-center border m-2 bg-light" id="purchase-drug">
+                <h3 class="h3 text-right mt-3">خرید</h3>
+                <p class="text-danger text-right">فقط مصرف کننده</p>
+                <div class=" row col-12 input-group mt-3 justify-content-center">
+                    <input class="form-control col-5 ml-1 mt-2 mb-2" type="text" name="pku" id="pku" placeholder="Product Keeping Unit" />
+                    <input class="form-control col-5 ml-1 mt-2 mb-2" type="text" name="ether-value" id="ether-value" placeholder="قیمت به Ether" />
+                </div>
+                <div class="row col-6 justify-content-center input-group mt-2">
+                    <button class="col-8 btn btn-success mt-2 mb-2 text-light " id="purchase">
+                        خرید
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- This Section is for Fetching Data -->
+    <div class="tab-pane fade" id="nav-fetch-data" role="tabpanel" aria-labelledby="nav-fetch-data-tab">
+        <div class="row col-12 justify-content-center">
+            <!-- Fetch Data -->
+            <div class="col-5 justify-content-center border m-2 bg-light" id="drug-design-fetch">
+                <h3 class="h3 text-right mt-3">بازیابی اطلاعات طراحی</h3>
+                <div class=" row col-12 input-group mt-3 justify-content-center">
+                    <input class="form-control col-5 ml-1 mt-2 mb-2" type="text" name="udpc" id="udpc" placeholder="UDPC" />
+                    <button class="col-5 btn btn-success mt-2 mb-2 text-light " id="fetch-design-data">
+                        بازیابی
+                    </button>
+                </div>
+
+                <h3 class="h3 text-right mt-3">بازیابی اطلاعات انبار</h3>
+                <div class=" row col-12 input-group mt-3 justify-content-center">
+                    <input class="form-control col-10 ml-1 mt-2 mb-2" type="text" name="slu" id="slu" placeholder="Stock Loading Unit" />
+                </div>
+                <div class=" row col-12 input-group mt-3 justify-content-center">
+                    <button class="col-5 btn btn-success m-1 text-light " id="fetch-load-data">
+                        بازیابی اطلاعات انبار
+                    </button>
+                    <button class="col-5 btn btn-success m-1 text-light " id="fetch-load-pku">
+                        بازیابی PKU
+                    </button>
+                </div>
+
+                <h3 class="h3 text-right mt-3">بازیابی اطلاعات محیطی</h3>
+                <div class=" row col-12 input-group mt-3 justify-content-center">
+                    <input class="form-control col-10 ml-1 mt-2 mb-2" type="text" name="pku" id="pku" placeholder="Product Keeping Unit" />
+                </div>
+                <div class=" row col-12 input-group mt-3 justify-content-center">
+                    <button class="col-5 btn btn-success m-1 text-light " id="fetch-env-data">
+                        بازیابی اطلاعات محیطی
+                    </button>
+                    <button class="col-5 btn btn-success m-1 text-light " id="fetch-data">
+                        بازیابی
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
