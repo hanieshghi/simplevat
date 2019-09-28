@@ -3,6 +3,7 @@ from web3.middleware import geth_poa_middleware
 from web3.middleware import pythonic_middleware, attrdict_middleware
 from django.http import HttpResponse
 from web3 import Web3
+from datetime import datetime
 import json
 
 # connection definition:===========================================
@@ -12,11 +13,11 @@ ws = ""
 
 w3 = Web3(Web3.HTTPProvider(HTTPUrl))
 #w3.middleware_stack.inject(geth_poa_middleware, layer=0)
-#w3.middleware_stack.add(pythonic_middleware)
-#w3.middleware_stack.add(attrdict_middleware)
+# w3.middleware_stack.add(pythonic_middleware)
+# w3.middleware_stack.add(attrdict_middleware)
 # contract definition:
-contract_address = Web3.toChecksumAddress('0x490Ca917914F645DdeD8F8B65709A89d44F92de8')
-
+contract_address = Web3.toChecksumAddress(
+    '0x490Ca917914F645DdeD8F8B65709A89d44F92de8')
 
 abi_code = json.loads("""[
     {
@@ -26,33 +27,6 @@ abi_code = json.loads("""[
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_udpc",
-          "type": "uint256"
-        }
-      ],
-      "name": "featchProductDesignMetaData",
-      "outputs": [
-        {
-          "name": "name",
-          "type": "string"
-        },
-        {
-          "name": "description",
-          "type": "string"
-        },
-        {
-          "name": "notes",
-          "type": "string"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
       "type": "function"
     },
     {
@@ -78,69 +52,11 @@ abi_code = json.loads("""[
       "constant": false,
       "inputs": [
         {
-          "name": "_udpc",
-          "type": "uint256"
-        },
-        {
-          "name": "_description",
-          "type": "string"
-        },
-        {
-          "name": "_isPassed",
-          "type": "bool"
-        },
-        {
-          "name": "_notes",
-          "type": "string"
-        }
-      ],
-      "name": "addTestCase",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
           "name": "recipient",
           "type": "address"
         }
       ],
       "name": "transferPrimary",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_udpc",
-          "type": "uint256"
-        }
-      ],
-      "name": "approveProduct",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_udpc",
-          "type": "uint256"
-        },
-        {
-          "name": "quantity",
-          "type": "uint256"
-        }
-      ],
-      "name": "manufacturProductsLoud",
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
@@ -169,7 +85,7 @@ abi_code = json.loads("""[
       "constant": true,
       "inputs": [
         {
-          "name": "_pku",
+          "name": "_pID",
           "type": "uint256"
         }
       ],
@@ -185,6 +101,10 @@ abi_code = json.loads("""[
         },
         {
           "name": "lastPaidTax",
+          "type": "uint256[]"
+        },
+        {
+          "name": "totalTax",
           "type": "uint256[]"
         },
         {
@@ -207,65 +127,22 @@ abi_code = json.loads("""[
     },
     {
       "constant": false,
-      "inputs": [],
-      "name": "unpause",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": true,
       "inputs": [
         {
-          "name": "_udpc",
-          "type": "uint256"
-        },
-        {
-          "name": "_testIndex",
+          "name": "_pID",
           "type": "uint256"
         }
       ],
-      "name": "featchProductDesignTestCases",
-      "outputs": [
-        {
-          "name": "description",
-          "type": "string"
-        },
-        {
-          "name": "isPassed",
-          "type": "bool"
-        },
-        {
-          "name": "notes",
-          "type": "string"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
+      "name": "purchaseProduct",
+      "outputs": [],
+      "payable": true,
+      "stateMutability": "payable",
       "type": "function"
     },
     {
       "constant": false,
-      "inputs": [
-        {
-          "name": "_udpc",
-          "type": "uint256"
-        },
-        {
-          "name": "_description",
-          "type": "string"
-        },
-        {
-          "name": "_isPassed",
-          "type": "bool"
-        },
-        {
-          "name": "_notes",
-          "type": "string"
-        }
-      ],
-      "name": "addTestCaseByRegulaor",
+      "inputs": [],
+      "name": "unpause",
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
@@ -300,20 +177,6 @@ abi_code = json.loads("""[
       "type": "function"
     },
     {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_udpc",
-          "type": "uint256"
-        }
-      ],
-      "name": "purchaseProductDesign",
-      "outputs": [],
-      "payable": true,
-      "stateMutability": "payable",
-      "type": "function"
-    },
-    {
       "constant": true,
       "inputs": [],
       "name": "paused",
@@ -325,34 +188,6 @@ abi_code = json.loads("""[
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [],
-      "name": "amIDesigner",
-      "outputs": [
-        {
-          "name": "",
-          "type": "bool"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_slu",
-          "type": "uint256"
-        }
-      ],
-      "name": "buyProductsLoud",
-      "outputs": [],
-      "payable": true,
-      "stateMutability": "payable",
       "type": "function"
     },
     {
@@ -374,94 +209,21 @@ abi_code = json.loads("""[
       "type": "function"
     },
     {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_udpc",
-          "type": "uint256"
-        },
-        {
-          "name": "_price",
-          "type": "uint256"
-        }
-      ],
-      "name": "upForSale",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
       "constant": true,
       "inputs": [
         {
-          "name": "_udpc",
-          "type": "uint256"
-        }
-      ],
-      "name": "fetchProductDesignData",
-      "outputs": [
-        {
-          "name": "currentOwner",
-          "type": "address"
-        },
-        {
-          "name": "designerId",
-          "type": "address"
-        },
-        {
-          "name": "designerName",
-          "type": "string"
-        },
-        {
-          "name": "ProductName",
-          "type": "string"
-        },
-        {
-          "name": "currentState",
-          "type": "string"
-        },
-        {
-          "name": "forSale",
-          "type": "bool"
-        },
-        {
-          "name": "salePrice",
-          "type": "uint256"
-        },
-        {
-          "name": "numberOfTests",
-          "type": "uint256"
-        },
-        {
-          "name": "numberOfManufacturers",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_pku",
+          "name": "_pID",
           "type": "uint256"
         }
       ],
       "name": "fetchProductItemData",
       "outputs": [
         {
-          "name": "_udpc",
+          "name": "pID",
           "type": "uint256"
         },
         {
-          "name": "_slu",
-          "type": "uint256"
-        },
-        {
-          "name": "state",
+          "name": "name",
           "type": "string"
         },
         {
@@ -477,7 +239,11 @@ abi_code = json.loads("""[
           "type": "uint256"
         },
         {
-          "name": "packingTimeStamp",
+          "name": "totalTax",
+          "type": "uint256"
+        },
+        {
+          "name": "lastPaidTax",
           "type": "uint256"
         },
         {
@@ -543,15 +309,6 @@ abi_code = json.loads("""[
     {
       "constant": false,
       "inputs": [],
-      "name": "renounceMeFromSeller",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [],
       "name": "renounceMeFromManufacturer",
       "outputs": [],
       "payable": false,
@@ -560,37 +317,9 @@ abi_code = json.loads("""[
     },
     {
       "constant": false,
-      "inputs": [],
-      "name": "assignMeAsDesigner",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": true,
       "inputs": [
         {
-          "name": "account",
-          "type": "address"
-        }
-      ],
-      "name": "isDesigner",
-      "outputs": [
-        {
-          "name": "",
-          "type": "bool"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_slu",
+          "name": "_pID",
           "type": "uint256"
         },
         {
@@ -602,68 +331,6 @@ abi_code = json.loads("""[
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_slu",
-          "type": "uint256"
-        }
-      ],
-      "name": "fetchProductLoaudData",
-      "outputs": [
-        {
-          "name": "quantity",
-          "type": "uint256"
-        },
-        {
-          "name": "_udpc",
-          "type": "uint256"
-        },
-        {
-          "name": "state",
-          "type": "string"
-        },
-        {
-          "name": "currentOwner",
-          "type": "address"
-        },
-        {
-          "name": "manufacturerId",
-          "type": "address"
-        },
-        {
-          "name": "price",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [],
-      "name": "assignMeAsSeller",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [],
-      "name": "amISeller",
-      "outputs": [
-        {
-          "name": "",
-          "type": "bool"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
       "type": "function"
     },
     {
@@ -709,22 +376,25 @@ abi_code = json.loads("""[
       "type": "function"
     },
     {
-      "constant": true,
+      "constant": false,
       "inputs": [
         {
-          "name": "_slu",
+          "name": "_price",
           "type": "uint256"
-        }
-      ],
-      "name": "fetchLoudPKUs",
-      "outputs": [
+        },
         {
-          "name": "loadPKUs",
-          "type": "uint256[]"
+          "name": "_tax",
+          "type": "uint256"
+        },
+        {
+          "name": "_name",
+          "type": "string"
         }
       ],
+      "name": "manufacturProductsLoud",
+      "outputs": [],
       "payable": false,
-      "stateMutability": "view",
+      "stateMutability": "nonpayable",
       "type": "function"
     },
     {
@@ -737,15 +407,7 @@ abi_code = json.loads("""[
           "type": "bool"
         },
         {
-          "name": "Seller",
-          "type": "bool"
-        },
-        {
           "name": "manufacturer",
-          "type": "bool"
-        },
-        {
-          "name": "designer",
           "type": "bool"
         }
       ],
@@ -771,54 +433,18 @@ abi_code = json.loads("""[
       "constant": false,
       "inputs": [
         {
-          "name": "_designerName",
-          "type": "string"
+          "name": "_pID",
+          "type": "uint256"
         },
         {
-          "name": "_ProductName",
-          "type": "string"
-        },
-        {
-          "name": "_description",
-          "type": "string"
-        },
-        {
-          "name": "_notes",
-          "type": "string"
+          "name": "newPrice",
+          "type": "uint256"
         }
       ],
-      "name": "designProduct",
+      "name": "setNewPrice",
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [],
-      "name": "renounceMeFromDesigner",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "account",
-          "type": "address"
-        }
-      ],
-      "name": "isSeller",
-      "outputs": [
-        {
-          "name": "",
-          "type": "bool"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
       "type": "function"
     },
     {
@@ -875,7 +501,7 @@ abi_code = json.loads("""[
       "inputs": [
         {
           "indexed": false,
-          "name": "slu",
+          "name": "pID",
           "type": "uint256"
         }
       ],
@@ -887,7 +513,7 @@ abi_code = json.loads("""[
       "inputs": [
         {
           "indexed": false,
-          "name": "slu",
+          "name": "pID",
           "type": "uint256"
         }
       ],
@@ -899,95 +525,11 @@ abi_code = json.loads("""[
       "inputs": [
         {
           "indexed": false,
-          "name": "slu",
-          "type": "uint256"
-        }
-      ],
-      "name": "Sold",
-      "type": "event"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": false,
-          "name": "pku",
+          "name": "pID",
           "type": "uint256"
         }
       ],
       "name": "Purchased",
-      "type": "event"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": false,
-          "name": "udpc",
-          "type": "uint256"
-        }
-      ],
-      "name": "Owned",
-      "type": "event"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": false,
-          "name": "udpc",
-          "type": "uint256"
-        }
-      ],
-      "name": "TestCaseAdded",
-      "type": "event"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": false,
-          "name": "udpc",
-          "type": "uint256"
-        }
-      ],
-      "name": "Approved",
-      "type": "event"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": false,
-          "name": "udpc",
-          "type": "uint256"
-        }
-      ],
-      "name": "UpForSale",
-      "type": "event"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": false,
-          "name": "udpc",
-          "type": "uint256"
-        }
-      ],
-      "name": "ProductDesignPurchased",
-      "type": "event"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": false,
-          "name": "udpc",
-          "type": "uint256"
-        }
-      ],
-      "name": "SaleCanceled",
       "type": "event"
     },
     {
@@ -1047,54 +589,6 @@ abi_code = json.loads("""[
           "type": "address"
         }
       ],
-      "name": "SellerAdded",
-      "type": "event"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": true,
-          "name": "account",
-          "type": "address"
-        }
-      ],
-      "name": "SellerRemoved",
-      "type": "event"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": true,
-          "name": "account",
-          "type": "address"
-        }
-      ],
-      "name": "DesignerAdded",
-      "type": "event"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": true,
-          "name": "account",
-          "type": "address"
-        }
-      ],
-      "name": "DesignerRemoved",
-      "type": "event"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": true,
-          "name": "account",
-          "type": "address"
-        }
-      ],
       "name": "ManufacturerAdded",
       "type": "event"
     },
@@ -1142,20 +636,6 @@ abi_code = json.loads("""[
       "payable": false,
       "stateMutability": "nonpayable",
       "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_pku",
-          "type": "uint256"
-        }
-      ],
-      "name": "purchaseProduct",
-      "outputs": [],
-      "payable": true,
-      "stateMutability": "payable",
-      "type": "function"
     }
   ]""")
 
@@ -1164,10 +644,22 @@ print(w3.isConnected())
 supply_contract = w3.eth.contract(address=contract_address, abi=abi_code)
 
 # set default account:
-w3.eth.defaultAccount = w3.eth.accounts[6]
-#default account is w3.eth.accounts[0], you can change 0 to 1 to 14 for tests.
-#all accounts are unlocked.
+w3.eth.defaultAccount = w3.eth.accounts[3]
+# default account is w3.eth.accounts[0], you can change 0 to 1 to 14 for tests.
+# all accounts are unlocked.
 default_account = w3.eth.defaultAccount
+
+ 
+# supply_contract = w3.eth.contract(abi=abi_code, bytecode=bytecode)
+# tx_hash = supply_contract.constructor().transact()
+# tx_receipt = w3.eth.waitforTransactionReceipt(tx_hash)
+# supply_contract = w3.eth.contract(address= tx_receipt.contract_address , abi = abi_code)
+
+# print(supply_contract.functions.manufacturProductsLoud(10, 1, "test"))
+# print(supply_contract.functions.fetchProductItemData(1) )
+
+#testlist = supply_contract.functions.fetchProductItemData(1).pID
+# print(testlist)
 
 
 def currentAccountRoles():
@@ -1175,25 +667,13 @@ def currentAccountRoles():
     return myRoles
 
 
-def assignMeAsDesigner():
-    tx = supply_contract.functions.assignMeAsDesigner().transact()
-    return tx
-
-
-
 def assignMeAsManufacturer():
     tx = supply_contract.functions.assignMeAsManufacturer().transact()
     return tx
 
 
-
 def assignMeAsBuyer():
     tx = supply_contract.functions.assignMeAsBuyer().transact()
-    return tx
-
-
-def renounceMeFromDesigner():
-    tx = supply_contract.functions.renounceMeFromDesigner().transact()
     return tx
 
 
@@ -1207,48 +687,11 @@ def renounceMeFromBuyer():
     return tx
 
 
-def designProduct(_designerName, _ProductName, _description, _notes):
-    tx = supply_contract.functions.designProduct(str(_designerName), str(
-        _ProductName), str(_designerName), str(_notes)).transact()
-    return tx
-
-
-
-def approveProduct(_udpc):
-    tx = supply_contract.functions.approveProduct(int(_udpc)).transact()
-    return tx
-
-
-def upForSale(_udpc, _price):
-    price_in_ether = int(_price)  # later use util to change _price to WEI.
-    tx = supply_contract.functions.upForSale(int(_udpc),price_in_ether).transact()
-    return tx
-
-
-def purchaseProductDesign(_udpc, _price):
-    price_in_ether = int(_price)  # later use util to change _price into WEI
-    tx = supply_contract.functions.purchaseProductDesign(
-        int(_udpc)).transact({'value': price_in_ether})
-    return tx
-
-def manufacturProductsLoud(_udpc, quantity):
+def manufacturProductsLouds(_price, _tax, _name):
     tx = supply_contract.functions.manufacturProductsLoud(
-        int(_udpc), int(quantity)).transact()
+        int(_price), int(_tax), str(_name)).transact()
     return tx
 
-
-def addProductsLoud(_slu, _unitPrice):
-    price_in_ether = int(_unitPrice)  # later use util to convert it to WEI
-    tx = supply_contract.functions.addProductsLoud(
-        int(_slu), price_in_ether).transact()
-    return tx
-
-
-def buyProductsLoud(_slu, _receiver, _price):
-    price_in_ether = int(_price)  # later use util to convert it to WEI
-    tx = supply_contract.functions.buyProductsLoud(
-        int(_slu), Web3.toChecksumAddress(_receiver)).transact({'value': price_in_ether})
-    return tx
 
 def updateTaxHistory(_slu, lastPaidTax):
     tx = supply_contract.functions.updateTaxHistory(
@@ -1257,215 +700,101 @@ def updateTaxHistory(_slu, lastPaidTax):
 
 
 def purchaseProduct(_pku, _price):
-    price_in_ether = int(_price)
+    
+    #price_in_wei = w3.toWei(_price, 'ether')
+    print('price' ,_price)
+    
+    totalprice = _price + _price * 9/100
+    print('totalprice' ,totalprice)
+    print('INTtotalprice' ,int(totalprice))
+    #totalprice = w3.fromWei(totalprice_wei,'ether')
     tx = supply_contract.functions.purchaseProduct(
-        int(_pku)).transact({'value': price_in_ether})
+        int(_pku)).transact({'value':  int(totalprice)})
     return tx
 
 
-def fetchProductDesignData(_udpc):
-    Product_design_data = supply_contract.functions.fetchProductDesignData(
-        int(_udpc)).call()
-    return Product_design_data
-
-
-def fetchProductLoaudData(_slu):
-    Product_load_data = supply_contract.functions.fetchProductLoaudData(
-        int(_slu)).call()
-    return Product_load_data
-
-
-def fetchLoudPKUs(_slu):
-    Product_loadPKUs = supply_contract.functions.fetchLoudPKUs(int(_slu)).call()
-    return Product_loadPKUs
-
-
 def fetchProductItemData(_pku):
-    Product_data = supply_contract.functions.fetchProductItemData(int(_pku)).call()
+    Product_data = supply_contract.functions.fetchProductItemData(
+        int(_pku)).call()
     return Product_data
 
 
 def fetchTaxHistory(_pku):
-    Product_env_history = supply_contract.functions.fetchTaxHistory(
+    Product_env_history = supply_contract.functions.fetchtaxHistory(
         int(_pku)).call()
     return Product_env_history
 
+def setNewPrice(pID , newPrice):
+    newPrice = w3.toWei(newPrice , 'ether')
+    tx = supply_contract.functions.setNewPrice(
+        int(pID) , int(newPrice)).transact()
+    
+    return tx
 
 # =================================================================
 
 # Create your views here.
+def purchase(request):
+    pID = request.GET['pID']
+    data = fetchProductItemData(pID)
+    price = data[4]
+    purchaseProduct(pID, price)
+    return render(request, 'purchase.html' , {'pID':pID})
 
+def getNewPrice(request):
+    newPrice = request.GET['newPrice']
+    pID = request.GET['pID']
+    setNewPrice(pID , newPrice )
+    return render(request, 'newPrice.html')
+
+def getProducts(request):
+    pID = request.GET['pID']
+    data = fetchProductItemData(pID)
+    name = data[1]
+    currentOwner = data[2]
+    manufacturerId = data[3]
+    price = data[4]/10**18
+    totalPaidTax = data[5]/10**18
+    lastPaidTax = data[6]/10**18
+    numberOfTaxUpdate = data[7]
+
+    return render(request, 'getProducts.html', {'pID': pID , 'name':name ,
+    'currentOwner':currentOwner , 'manufacturerId': manufacturerId , 'price':price,
+    'totalPaidTax': totalPaidTax , 'lastPaidTax':lastPaidTax , 'numberOfTaxUpdate':numberOfTaxUpdate})
+
+
+def generateProduct(request):
+    
+    return render(request, 'generateProduct.html' )
+
+
+def submitproduct(request):
+    name = request.GET['name']
+    price = request.GET['price']
+    weiPrice = Web3.toWei(price, 'ether')
+    tax = request.GET['taxPaid']
+    weiTax = Web3.toWei(tax, 'ether')
+
+    # assignMeAsManufacturer()
+    manufacturProductsLouds(weiPrice, weiTax, name)
+    #manufacturProductsLouds(2, 2, "Name")
+
+    return render(request, 'submitproduct.html')
+
+def taxhistory(request):
+    pID = request.GET['pID']
+    taxdata = fetchTaxHistory(pID)
+
+    numberOfupdate = taxdata[0]
+    timeStamps = [datetime.fromtimestamp(i).isoformat() for i in taxdata[1]]
+    lastPaidTax = [i/10**18 for i in taxdata[2]]
+    totalTax = taxdata[3][-1]/10**18
+    updaterAddresses = taxdata[4]
+
+    return render(request, 'taxhistory.html', {'pID': pID , 'numberOfupdate':numberOfupdate ,
+    'timeStamps':timeStamps , 'lastPaidTax': lastPaidTax , 'totalTax':totalTax,
+    'updaterAddresses': updaterAddresses })
 
 def home(request):
-    if (request.POST.get('isAjax') == 'true'):
-        response_data = {}
-        if(request.POST.get('func') == 'currentAccountRoles'):
-            response_data['res_data'] = currentAccountRoles()
-            return HttpResponse(json.dumps(response_data), content_type="application/json")
-
-
-        elif(request.POST.get('func') == 'assignMeAsBuyer'):
-            try:
-                response_data['res_data'] = assignMeAsBuyer().hex()
-                return HttpResponse(json.dumps(response_data), content_type="application/json")
-
-            except Exception as e:
-                response_data['res_data'] = str(e)
-                return HttpResponse(json.dumps(response_data), content_type="application/json")
-
-        elif(request.POST.get('func') == 'renounceMeFromBuyer'):
-            try:
-                response_data['res_data'] = renounceMeFromBuyer().hex()
-                return HttpResponse(json.dumps(response_data), content_type="application/json")
-            except Exception as e:
-                response_data['res_data'] = str(e)
-                return HttpResponse(json.dumps(response_data), content_type="application/json")
-
-        elif(request.POST.get('func') == 'assignMeAsManufacturer'):
-            try:
-                response_data['res_data'] = assignMeAsManufacturer().hex()
-                return HttpResponse(json.dumps(response_data), content_type="application/json")
-            except Exception as e:
-                response_data['res_data'] = str(e)
-                return HttpResponse(json.dumps(response_data), content_type="application/json")
-
-        elif(request.POST.get('func') == 'renounceMeFromManufacturer'):
-            try:
-                response_data['res_data'] = renounceMeFromManufacturer().hex()
-                return HttpResponse(json.dumps(response_data), content_type="application/json")
-            except Exception as e:
-                response_data['res_data'] = str(e)
-                return HttpResponse(json.dumps(response_data), content_type="application/json")
-            
-        elif(request.POST.get('func') == 'assignMeAsDesigner'):
-            try:
-                response_data['res_data'] = assignMeAsDesigner().hex()
-                return HttpResponse(json.dumps(response_data), content_type="application/json")
-            except Exception as e:
-                response_data['res_data'] = str(e)
-                return HttpResponse(json.dumps(response_data), content_type="application/json")
-
-        elif(request.POST.get('func') == 'renounceMeFromDesigner'):
-            try:
-                response_data['res_data'] = renounceMeFromDesigner().hex()
-                return HttpResponse(json.dumps(response_data), content_type="application/json")
-            except Exception as e:
-                response_data['res_data'] = str(e)
-                return HttpResponse(json.dumps(response_data), content_type="application/json")
-
-        elif(request.POST.get('func') == 'designProduct'):
-            try:
-                response_data['res_data'] = designProduct(request.POST.get('designerName'), request.POST.get('ProductName'), request.POST.get('describtion'), request.POST.get('note')).hex()
-                return HttpResponse(json.dumps(response_data), content_type="application/json")
-            except Exception as e:
-                response_data['res_data'] = str(e)
-                return HttpResponse(json.dumps(response_data), content_type="application/json")
-
-        elif(request.POST.get('func') == 'approveProduct'):
-            try:
-                response_data['res_data'] = approveProduct(request.POST.get('udpc')).hex()
-                return HttpResponse(json.dumps(response_data), content_type="application/json")
-            except Exception as e:
-                response_data['res_data'] = str(e)
-                return HttpResponse(json.dumps(response_data), content_type="application/json")
-
-        elif(request.POST.get('func') == 'upForSale'):
-            try:
-                response_data['res_data'] = upForSale(request.POST.get('udpc'), request.POST.get('price')).hex()
-                return HttpResponse(json.dumps(response_data), content_type="application/json")
-            except Exception as e:
-                response_data['res_data'] = str(e)
-                return HttpResponse(json.dumps(response_data), content_type="application/json")
-
-        elif(request.POST.get('func') == 'purchaseProductDesign'):
-            try:
-                response_data['res_data'] = purchaseProductDesign(request.POST.get('udpc'), request.POST.get('price')).hex()
-                return HttpResponse(json.dumps(response_data), content_type="application/json")
-            except Exception as e:
-                response_data['res_data'] = str(e)
-                return HttpResponse(json.dumps(response_data), content_type="application/json")
-
-        elif(request.POST.get('func') == 'manufacturProductsLoud'):
-            try:
-                response_data['res_data'] = manufacturProductsLoud(request.POST.get('udpc'), request.POST.get('quantity')).hex()
-                return HttpResponse(json.dumps(response_data), content_type="application/json")
-            except Exception as e:
-                response_data['res_data'] = str(e)
-                return HttpResponse(json.dumps(response_data), content_type="application/json")
-
-
-        elif(request.POST.get('func') == 'addProductsLoud'):
-            try:
-                response_data['res_data'] = addProductsLoud(request.POST.get('slu'), request.POST.get('unit_price')).hex()
-                return HttpResponse(json.dumps(response_data), content_type="application/json")
-            except Exception as e:
-                response_data['res_data'] = str(e)
-                return HttpResponse(json.dumps(response_data), content_type="application/json")
-
-        elif(request.POST.get('func') == 'buyProductsLoud'):
-            try:
-                response_data['res_data'] = buyProductsLoud(request.POST.get('slu'), request.POST.get('retailer_address'), request.POST.get('ether_value')).hex()
-                return HttpResponse(json.dumps(response_data), content_type="application/json")
-            except Exception as e:
-                response_data['res_data'] = str(e)
-                return HttpResponse(json.dumps(response_data), content_type="application/json")
-
-        elif(request.POST.get('func') == 'updateTaxHistory'):
-            try:
-                response_data['res_data'] = updateTaxHistory(request.POST.get('slu'), request.POST.get('lastPaidTax')).hex()
-                return HttpResponse(json.dumps(response_data), content_type="application/json")
-            except Exception as e:
-                response_data['res_data'] = str(e)
-                return HttpResponse(json.dumps(response_data), content_type="application/json")
-
-
-        elif(request.POST.get('func') == 'purchaseProduct'):
-            try:
-                response_data['res_data'] = purchaseProduct(request.POST.get('pku'), request.POST.get('ether_value')).hex()
-                return HttpResponse(json.dumps(response_data), content_type="application/json")
-            except Exception as e:
-                response_data['res_data'] = str(e)
-                return HttpResponse(json.dumps(response_data), content_type="application/json")
-
-        elif(request.POST.get('func') == 'fetchProductDesignData'):
-            try:
-                response_data['res_data'] = fetchProductDesignData(request.POST.get('udpc'))
-                return HttpResponse(json.dumps(response_data), content_type="application/json")
-            except Exception as e:
-                response_data['res_data'] = str(e)
-                return HttpResponse(json.dumps(response_data), content_type="application/json")
-
-        elif(request.POST.get('func') == 'fetchProductLoaudData'):
-            try:
-                response_data['res_data'] = fetchProductLoaudData(request.POST.get('slu'))
-                return HttpResponse(json.dumps(response_data), content_type="application/json")
-            except Exception as e:
-                response_data['res_data'] = str(e)
-                return HttpResponse(json.dumps(response_data), content_type="application/json")
-                
-        elif(request.POST.get('func') == 'fetchLoudPKUs'):
-            try:
-                response_data['res_data'] = fetchLoudPKUs(request.POST.get('slu'))
-                return HttpResponse(json.dumps(response_data), content_type="application/json")
-            except Exception as e:
-                response_data['res_data'] = str(e)
-                return HttpResponse(json.dumps(response_data), content_type="application/json")
-
-        elif(request.POST.get('func') == 'fetchProductItemData'):
-            try:
-                response_data['res_data'] = fetchProductItemData(request.POST.get('pku'))
-                return HttpResponse(json.dumps(response_data), content_type="application/json")
-            except Exception as e:
-                response_data['res_data'] = str(e)
-                return HttpResponse(json.dumps(response_data), content_type="application/json")
-        
-        elif(request.POST.get('func') == 'fetchTaxHistory'):
-            try:
-                response_data['res_data'] = fetchTaxHistory(
-                    request.POST.get('pku'))
-                return HttpResponse(json.dumps(response_data), content_type="application/json")
-            except Exception as e:
-                response_data['res_data'] = str(e)
-                return HttpResponse(json.dumps(response_data), content_type="application/json")
-
+    request.POST.get('input')
     return render(request, 'home.html', {'conn': w3.eth.defaultAccount, 'network': HTTPUrl})

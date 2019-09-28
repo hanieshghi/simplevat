@@ -61,6 +61,12 @@ contract Product {
         _;
     }
 
+    modifier onlyOwnerOf(uint _pID) {
+        //uint firstpID = stockLouds[_pID][0];
+        bool isOwner = pItems[_pID].currentOwnerId == msg.sender;
+        require(isOwner);
+        _;
+    }
 
     /// Modifier that checks if an ProductDesignItem.state of a udpc is Owned
     modifier isProductTaxTracked(uint _pID) {
@@ -70,7 +76,6 @@ contract Product {
 
     /// Constructor Function sets up pID and pID to 0
     constructor() public {
-        pID = 0;
         pID = 0;
     }
 
@@ -86,17 +91,10 @@ contract Product {
         newProductItem.taxUpdateCounter = 0;
         newProductItem.price = _price;
         newProductItem.name = _name;
-        updateTaxHistory(_pID , _tax);
-        //newProductItem.taxHistory[0].totalTax = _tax;
-        //newProductItem.taxHistory[0].lastPaidTax = _tax;
-        /*for (uint i = 0; i < quantity; i++) {
-            uint _pID = ++pID;
-            newProductItem.pID = _pID;
-            pItems[_pID] = newProductItem;
-            
-            stockLouds[_pID].push(_pID);
-        }*/
         pItems[_pID] = newProductItem;
+        updateTaxHistory(_pID , _tax);
+        
+        //newProductItem.taxUpdateCounter = pItems[_pID].taxUpdateCounter ;
         emit Manufactured(_pID);
     }
 
@@ -111,6 +109,10 @@ contract Product {
         emit Purchased(_pID);
     }
     
+    function setNewPrice(uint _pID,uint newPrice) public onlyOwnerOf(_pID){
+        require( _pID != 0, 'Given pID Not Created Yet!');
+        pItems[_pID].price = newPrice;
+    }
 
     function fetchProductItemData(uint _pID)
         public
@@ -135,12 +137,12 @@ contract Product {
         manufacturerId = _ProductItem.manufacturerId;
         price = _ProductItem.price;
         numberOfTaxUpdate = _ProductItem.taxUpdateCounter;
-        totalTax = _ProductItem.taxHistory[numberOfTaxUpdate].totalTax;
-        lastPaidTax = _ProductItem.taxHistory[numberOfTaxUpdate].lastPaidTax;
+        totalTax = _ProductItem.taxHistory[numberOfTaxUpdate-1].totalTax;
+        lastPaidTax = _ProductItem.taxHistory[numberOfTaxUpdate-1].lastPaidTax;
     }
 
 
-    function updateTaxHistory (
+    function updateTaxHistory(
         uint _pID,
         uint _paidTax
         //uint _totalTax
@@ -149,11 +151,13 @@ contract Product {
     {   
         uint _totalTax;
         if(pItems[_pID].taxUpdateCounter == 0){
-            _totalTax = pItems[_pID].taxHistory[pItems[_pID].taxUpdateCounter].totalTax + _paidTax;
+            _totalTax = _paidTax;
         }
-        else{
-            _totalTax = pItems[_pID].taxHistory[pItems[_pID].taxUpdateCounter-1].totalTax + _paidTax; 
+        else if(pItems[_pID].taxUpdateCounter != 0){
+            _totalTax = pItems[_pID].taxHistory[pItems[_pID].taxUpdateCounter - 1].totalTax + _paidTax; 
         }
+        
+        
         TaxUpdateOpj memory _taxUpdate = TaxUpdateOpj(
             now,
             _paidTax,
@@ -167,13 +171,14 @@ contract Product {
         pItems[_pID].taxUpdateCounter ++;
        // }
         emit taxUpdated(_pID);
+      
     }
 
 
 
 
     function fetchtaxHistory(uint _pID)
-        external
+        public
         view
         isProductTaxTracked(_pID)
         returns(

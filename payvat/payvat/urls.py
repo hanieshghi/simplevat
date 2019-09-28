@@ -19,5 +19,12 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.home),
+    path('',views.home, name='home'),
+    path('purchase/', views.purchase, name ='purchase'),
+    path('getPoducts/', views.getProducts, name ='getProducts'),
+    path('generateProduct/', views.generateProduct, name ='generateProduct'),
+    path('submitproduct/', views.submitproduct, name ='submitproduct'),
+    path('newPrice/', views.getNewPrice, name ='newPrice'),
+    path('taxhistory/', views.taxhistory, name ='taxhistory'),
+    
 ]

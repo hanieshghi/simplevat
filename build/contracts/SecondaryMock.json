@@ -54,22 +54,22 @@
   "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"recipient\",\"type\":\"address\"}],\"name\":\"transferPrimary\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"onlyPrimaryMock\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"primary\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"recipient\",\"type\":\"address\"}],\"name\":\"PrimaryTransferred\",\"type\":\"event\"}],\"devdoc\":{\"methods\":{\"primary()\":{\"return\":\"the address of the primary.\"},\"transferPrimary(address)\":{\"details\":\"Transfers contract to a new primary.\",\"params\":{\"recipient\":\"The address of new primary.\"}}}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/E/document/blockchain/myprojects/simplevat/contracts/openzeppelin/contracts/mocks/SecondaryMock.sol\":\"SecondaryMock\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/E/document/blockchain/myprojects/simplevat/contracts/openzeppelin/contracts/GSN/Context.sol\":{\"keccak256\":\"0x0d4306da5305cb78f09c70c18ec86dbc66f22fa5ade90edc20e1ab88e16d4d10\",\"urls\":[\"bzzr://47885dccac32ee543284e93f21a5f62c499076b04d01b12ff67aefffbbdcbd34\"]},\"/E/document/blockchain/myprojects/simplevat/contracts/openzeppelin/contracts/mocks/SecondaryMock.sol\":{\"keccak256\":\"0x4529ca2e41a15dc9c5df5b69a967cb9bdaa615ed4bd49a23871777ceb702b02c\",\"urls\":[\"bzzr://8fc78a8fe137dc346e0a83b37751ef0135819bd67f97d9093bfd84bda71b702a\"]},\"/E/document/blockchain/myprojects/simplevat/contracts/openzeppelin/contracts/ownership/Secondary.sol\":{\"keccak256\":\"0x30b9cfe5aeb07c96a3346cd27dcdc2f9f19d7f664166f9b71f1e9e50605d1d67\",\"urls\":[\"bzzr://123562fe4fe4f80cf5c4f9f2e4678d9245dba57db4685ef97b395b5c9e0d5cf9\"]}},\"version\":1}",
   "bytecode": "0x60806040526100126100da60201b60201c565b6000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055507f4101e71e974f68df5e9730cc223280b41654676bbb052cdcc735c3337e64d2d96000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff16604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390a16100e2565b600033905090565b610438806100f16000396000f3fe608060405234801561001057600080fd5b50600436106100415760003560e01c80632348238c14610046578063846224251461008a578063c6dbdf6114610094575b600080fd5b6100886004803603602081101561005c57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506100de565b005b6100926102d7565b005b61009c610385565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1661011e6103ae565b73ffffffffffffffffffffffffffffffffffffffff161461018a576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252602c8152602001806103e1602c913960400191505060405180910390fd5b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415610210576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252602a8152602001806103b7602a913960400191505060405180910390fd5b806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055507f4101e71e974f68df5e9730cc223280b41654676bbb052cdcc735c3337e64d2d96000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff16604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390a150565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166103176103ae565b73ffffffffffffffffffffffffffffffffffffffff1614610383576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252602c8152602001806103e1602c913960400191505060405180910390fd5b565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b60003390509056fe5365636f6e646172793a206e6577207072696d61727920697320746865207a65726f20616464726573735365636f6e646172793a2063616c6c6572206973206e6f7420746865207072696d617279206163636f756e74a165627a7a72305820edade00e152f91ef9aa656ba44c65bec40892e60a85ff3bc0e54dfbff8d7e8900029",
   "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100415760003560e01c80632348238c14610046578063846224251461008a578063c6dbdf6114610094575b600080fd5b6100886004803603602081101561005c57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506100de565b005b6100926102d7565b005b61009c610385565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1661011e6103ae565b73ffffffffffffffffffffffffffffffffffffffff161461018a576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252602c8152602001806103e1602c913960400191505060405180910390fd5b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415610210576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252602a8152602001806103b7602a913960400191505060405180910390fd5b806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055507f4101e71e974f68df5e9730cc223280b41654676bbb052cdcc735c3337e64d2d96000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff16604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390a150565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166103176103ae565b73ffffffffffffffffffffffffffffffffffffffff1614610383576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252602c8152602001806103e1602c913960400191505060405180910390fd5b565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b60003390509056fe5365636f6e646172793a206e6577207072696d61727920697320746865207a65726f20616464726573735365636f6e646172793a2063616c6c6572206973206e6f7420746865207072696d617279206163636f756e74a165627a7a72305820edade00e152f91ef9aa656ba44c65bec40892e60a85ff3bc0e54dfbff8d7e8900029",
-  "sourceMap": "63:159:114:-;;;510:12:124;:10;;;:12;;:::i;:::-;499:8;;:23;;;;;;;;;;;;;;;;;;537:28;556:8;;;;;;;;;;;537:28;;;;;;;;;;;;;;;;;;;;;;63:159:114;;791:88:10;836:7;862:10;855:17;;791:88;:::o;63:159:114:-;;;;;;;",
-  "deployedSourceMap": "63:159:114:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;63:159:114;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1066:231:124;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1066:231:124;;;;;;;;;;;;;;;;;;;:::i;:::-;;105:115:114;;;:::i;:::-;;862:81:124;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;1066:231;722:8;;;;;;;;;;;706:24;;:12;:10;:12::i;:::-;:24;;;698:81;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1168:1;1147:23;;:9;:23;;;;1139:78;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1238:9;1227:8;;:20;;;;;;;;;;;;;;;;;;1262:28;1281:8;;;;;;;;;;;1262:28;;;;;;;;;;;;;;;;;;;;;;1066:231;:::o;105:115:114:-;722:8:124;;;;;;;;;;;706:24;;:12;:10;:12::i;:::-;:24;;;698:81;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;105:115:114:o;862:81:124:-;902:7;928:8;;;;;;;;;;;921:15;;862:81;:::o;791:88:10:-;836:7;862:10;855:17;;791:88;:::o",
+  "sourceMap": "63:159:111:-;;;510:12:121;:10;;;:12;;:::i;:::-;499:8;;:23;;;;;;;;;;;;;;;;;;537:28;556:8;;;;;;;;;;;537:28;;;;;;;;;;;;;;;;;;;;;;63:159:111;;791:88:7;836:7;862:10;855:17;;791:88;:::o;63:159:111:-;;;;;;;",
+  "deployedSourceMap": "63:159:111:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;63:159:111;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1066:231:121;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1066:231:121;;;;;;;;;;;;;;;;;;;:::i;:::-;;105:115:111;;;:::i;:::-;;862:81:121;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;1066:231;722:8;;;;;;;;;;;706:24;;:12;:10;:12::i;:::-;:24;;;698:81;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1168:1;1147:23;;:9;:23;;;;1139:78;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1238:9;1227:8;;:20;;;;;;;;;;;;;;;;;;1262:28;1281:8;;;;;;;;;;;1262:28;;;;;;;;;;;;;;;;;;;;;;1066:231;:::o;105:115:111:-;722:8:121;;;;;;;;;;;706:24;;:12;:10;:12::i;:::-;:24;;;698:81;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;105:115:111:o;862:81:121:-;902:7;928:8;;;;;;;;;;;921:15;;862:81;:::o;791:88:7:-;836:7;862:10;855:17;;791:88;:::o",
   "source": "pragma solidity ^0.5.0;\n\nimport \"../ownership/Secondary.sol\";\n\ncontract SecondaryMock is Secondary {\n    function onlyPrimaryMock() public view onlyPrimary {\n        // solhint-disable-previous-line no-empty-blocks\n    }\n}\n",
   "sourcePath": "E:/document/blockchain/myprojects/simplevat/contracts/openzeppelin/contracts/mocks/SecondaryMock.sol",
   "ast": {
     "absolutePath": "/E/document/blockchain/myprojects/simplevat/contracts/openzeppelin/contracts/mocks/SecondaryMock.sol",
     "exportedSymbols": {
       "SecondaryMock": [
-        10752
+        9442
       ]
     },
-    "id": 10753,
+    "id": 9443,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 10742,
+        "id": 9432,
         "literals": [
           "solidity",
           "^",
@@ -77,16 +77,16 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:23:114"
+        "src": "0:23:111"
       },
       {
         "absolutePath": "/E/document/blockchain/myprojects/simplevat/contracts/openzeppelin/contracts/ownership/Secondary.sol",
         "file": "../ownership/Secondary.sol",
-        "id": 10743,
+        "id": 9433,
         "nodeType": "ImportDirective",
-        "scope": 10753,
-        "sourceUnit": 11267,
-        "src": "25:36:114",
+        "scope": 9443,
+        "sourceUnit": 9957,
+        "src": "25:36:111",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -96,108 +96,108 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 10744,
+              "id": 9434,
               "name": "Secondary",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 11266,
-              "src": "89:9:114",
+              "referencedDeclaration": 9956,
+              "src": "89:9:111",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_Secondary_$11266",
+                "typeIdentifier": "t_contract$_Secondary_$9956",
                 "typeString": "contract Secondary"
               }
             },
-            "id": 10745,
+            "id": 9435,
             "nodeType": "InheritanceSpecifier",
-            "src": "89:9:114"
+            "src": "89:9:111"
           }
         ],
         "contractDependencies": [
-          2413,
-          11266
+          1103,
+          9956
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 10752,
+        "id": 9442,
         "linearizedBaseContracts": [
-          10752,
-          11266,
-          2413
+          9442,
+          9956,
+          1103
         ],
         "name": "SecondaryMock",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": {
-              "id": 10750,
+              "id": 9440,
               "nodeType": "Block",
-              "src": "156:64:114",
+              "src": "156:64:111",
               "statements": []
             },
             "documentation": null,
-            "id": 10751,
+            "id": 9441,
             "implemented": true,
             "kind": "function",
             "modifiers": [
               {
                 "arguments": null,
-                "id": 10748,
+                "id": 9438,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 10747,
+                  "id": 9437,
                   "name": "onlyPrimary",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 11232,
-                  "src": "144:11:114",
+                  "referencedDeclaration": 9922,
+                  "src": "144:11:111",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
                     "typeString": "modifier ()"
                   }
                 },
                 "nodeType": "ModifierInvocation",
-                "src": "144:11:114"
+                "src": "144:11:111"
               }
             ],
             "name": "onlyPrimaryMock",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 10746,
+              "id": 9436,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "129:2:114"
+              "src": "129:2:111"
             },
             "returnParameters": {
-              "id": 10749,
+              "id": 9439,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "156:0:114"
+              "src": "156:0:111"
             },
-            "scope": 10752,
-            "src": "105:115:114",
+            "scope": 9442,
+            "src": "105:115:111",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 10753,
-        "src": "63:159:114"
+        "scope": 9443,
+        "src": "63:159:111"
       }
     ],
-    "src": "0:223:114"
+    "src": "0:223:111"
   },
   "legacyAST": {
     "absolutePath": "/E/document/blockchain/myprojects/simplevat/contracts/openzeppelin/contracts/mocks/SecondaryMock.sol",
     "exportedSymbols": {
       "SecondaryMock": [
-        10752
+        9442
       ]
     },
-    "id": 10753,
+    "id": 9443,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 10742,
+        "id": 9432,
         "literals": [
           "solidity",
           "^",
@@ -205,16 +205,16 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:23:114"
+        "src": "0:23:111"
       },
       {
         "absolutePath": "/E/document/blockchain/myprojects/simplevat/contracts/openzeppelin/contracts/ownership/Secondary.sol",
         "file": "../ownership/Secondary.sol",
-        "id": 10743,
+        "id": 9433,
         "nodeType": "ImportDirective",
-        "scope": 10753,
-        "sourceUnit": 11267,
-        "src": "25:36:114",
+        "scope": 9443,
+        "sourceUnit": 9957,
+        "src": "25:36:111",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -224,95 +224,95 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 10744,
+              "id": 9434,
               "name": "Secondary",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 11266,
-              "src": "89:9:114",
+              "referencedDeclaration": 9956,
+              "src": "89:9:111",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_Secondary_$11266",
+                "typeIdentifier": "t_contract$_Secondary_$9956",
                 "typeString": "contract Secondary"
               }
             },
-            "id": 10745,
+            "id": 9435,
             "nodeType": "InheritanceSpecifier",
-            "src": "89:9:114"
+            "src": "89:9:111"
           }
         ],
         "contractDependencies": [
-          2413,
-          11266
+          1103,
+          9956
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 10752,
+        "id": 9442,
         "linearizedBaseContracts": [
-          10752,
-          11266,
-          2413
+          9442,
+          9956,
+          1103
         ],
         "name": "SecondaryMock",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": {
-              "id": 10750,
+              "id": 9440,
               "nodeType": "Block",
-              "src": "156:64:114",
+              "src": "156:64:111",
               "statements": []
             },
             "documentation": null,
-            "id": 10751,
+            "id": 9441,
             "implemented": true,
             "kind": "function",
             "modifiers": [
               {
                 "arguments": null,
-                "id": 10748,
+                "id": 9438,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 10747,
+                  "id": 9437,
                   "name": "onlyPrimary",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 11232,
-                  "src": "144:11:114",
+                  "referencedDeclaration": 9922,
+                  "src": "144:11:111",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
                     "typeString": "modifier ()"
                   }
                 },
                 "nodeType": "ModifierInvocation",
-                "src": "144:11:114"
+                "src": "144:11:111"
               }
             ],
             "name": "onlyPrimaryMock",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 10746,
+              "id": 9436,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "129:2:114"
+              "src": "129:2:111"
             },
             "returnParameters": {
-              "id": 10749,
+              "id": 9439,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "156:0:114"
+              "src": "156:0:111"
             },
-            "scope": 10752,
-            "src": "105:115:114",
+            "scope": 9442,
+            "src": "105:115:111",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 10753,
-        "src": "63:159:114"
+        "scope": 9443,
+        "src": "63:159:111"
       }
     ],
-    "src": "0:223:114"
+    "src": "0:223:111"
   },
   "compiler": {
     "name": "solc",
@@ -320,7 +320,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.16",
-  "updatedAt": "2019-09-24T08:06:34.574Z",
+  "updatedAt": "2019-09-28T08:08:34.148Z",
   "devdoc": {
     "methods": {
       "primary()": {

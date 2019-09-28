@@ -21,7 +21,7 @@ contract MainChain is SupplyChain, Ownable, Secondary {
         selfdestruct(msg.sender);
     }
 
-    function purchaseProduct (uint _pku)
+   /* function purchaseProduct (uint _pku)
         public
         payable
     {
@@ -32,6 +32,6 @@ contract MainChain is SupplyChain, Ownable, Secondary {
         uint developerBounty = price*1 /100;
         developerId.transfer(developerBounty);
 
-    }
+    }*/
 
 }
