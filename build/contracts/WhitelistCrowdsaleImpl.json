@@ -280,14 +280,14 @@
     "absolutePath": "/E/document/blockchain/myprojects/simplevat/contracts/openzeppelin/contracts/mocks/WhitelistCrowdsaleImpl.sol",
     "exportedSymbols": {
       "WhitelistCrowdsaleImpl": [
-        9760
+        9851
       ]
     },
-    "id": 9761,
+    "id": 9852,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 9737,
+        "id": 9828,
         "literals": [
           "solidity",
           "^",
@@ -300,10 +300,10 @@
       {
         "absolutePath": "/E/document/blockchain/myprojects/simplevat/contracts/openzeppelin/contracts/token/ERC20/IERC20.sol",
         "file": "../token/ERC20/IERC20.sol",
-        "id": 9738,
+        "id": 9829,
         "nodeType": "ImportDirective",
-        "scope": 9761,
-        "sourceUnit": 11347,
+        "scope": 9852,
+        "sourceUnit": 11438,
         "src": "25:35:118",
         "symbolAliases": [],
         "unitAlias": ""
@@ -311,10 +311,10 @@
       {
         "absolutePath": "/E/document/blockchain/myprojects/simplevat/contracts/openzeppelin/contracts/crowdsale/validation/WhitelistCrowdsale.sol",
         "file": "../crowdsale/validation/WhitelistCrowdsale.sol",
-        "id": 9739,
+        "id": 9830,
         "nodeType": "ImportDirective",
-        "scope": 9761,
-        "sourceUnit": 4211,
+        "scope": 9852,
+        "sourceUnit": 4302,
         "src": "61:56:118",
         "symbolAliases": [],
         "unitAlias": ""
@@ -322,10 +322,10 @@
       {
         "absolutePath": "/E/document/blockchain/myprojects/simplevat/contracts/openzeppelin/contracts/crowdsale/Crowdsale.sol",
         "file": "../crowdsale/Crowdsale.sol",
-        "id": 9740,
+        "id": 9831,
         "nodeType": "ImportDirective",
-        "scope": 9761,
-        "sourceUnit": 3212,
+        "scope": 9852,
+        "sourceUnit": 3303,
         "src": "118:36:118",
         "symbolAliases": [],
         "unitAlias": ""
@@ -336,17 +336,17 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 9741,
+              "id": 9832,
               "name": "Crowdsale",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 3211,
+              "referencedDeclaration": 3302,
               "src": "192:9:118",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_Crowdsale_$3211",
+                "typeIdentifier": "t_contract$_Crowdsale_$3302",
                 "typeString": "contract Crowdsale"
               }
             },
-            "id": 9742,
+            "id": 9833,
             "nodeType": "InheritanceSpecifier",
             "src": "192:9:118"
           },
@@ -354,54 +354,54 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 9743,
+              "id": 9834,
               "name": "WhitelistCrowdsale",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 4210,
+              "referencedDeclaration": 4301,
               "src": "203:18:118",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_WhitelistCrowdsale_$4210",
+                "typeIdentifier": "t_contract$_WhitelistCrowdsale_$4301",
                 "typeString": "contract WhitelistCrowdsale"
               }
             },
-            "id": 9744,
+            "id": 9835,
             "nodeType": "InheritanceSpecifier",
             "src": "203:18:118"
           }
         ],
         "contractDependencies": [
-          1103,
-          2821,
-          2934,
-          3211,
-          4210,
-          14525
+          1194,
+          2912,
+          3025,
+          3302,
+          4301,
+          14616
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 9760,
+        "id": 9851,
         "linearizedBaseContracts": [
-          9760,
-          4210,
-          3211,
-          14525,
-          2934,
-          2821,
-          1103
+          9851,
+          4301,
+          3302,
+          14616,
+          3025,
+          2912,
+          1194
         ],
         "name": "WhitelistCrowdsaleImpl",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": {
-              "id": 9758,
+              "id": 9849,
               "nodeType": "Block",
               "src": "337:64:118",
               "statements": []
             },
             "documentation": null,
-            "id": 9759,
+            "id": 9850,
             "implemented": true,
             "kind": "constructor",
             "modifiers": [
@@ -409,11 +409,11 @@
                 "arguments": [
                   {
                     "argumentTypes": null,
-                    "id": 9753,
+                    "id": 9844,
                     "name": "_rate",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 9746,
+                    "referencedDeclaration": 9837,
                     "src": "313:5:118",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
@@ -422,11 +422,11 @@
                   },
                   {
                     "argumentTypes": null,
-                    "id": 9754,
+                    "id": 9845,
                     "name": "_wallet",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 9748,
+                    "referencedDeclaration": 9839,
                     "src": "320:7:118",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address_payable",
@@ -435,29 +435,29 @@
                   },
                   {
                     "argumentTypes": null,
-                    "id": 9755,
+                    "id": 9846,
                     "name": "_token",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 9750,
+                    "referencedDeclaration": 9841,
                     "src": "329:6:118",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IERC20_$11346",
+                      "typeIdentifier": "t_contract$_IERC20_$11437",
                       "typeString": "contract IERC20"
                     }
                   }
                 ],
-                "id": 9756,
+                "id": 9847,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 9752,
+                  "id": 9843,
                   "name": "Crowdsale",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 3211,
+                  "referencedDeclaration": 3302,
                   "src": "303:9:118",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_type$_t_contract$_Crowdsale_$3211_$",
+                    "typeIdentifier": "t_type$_t_contract$_Crowdsale_$3302_$",
                     "typeString": "type(contract Crowdsale)"
                   }
                 },
@@ -468,15 +468,15 @@
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9751,
+              "id": 9842,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9746,
+                  "id": 9837,
                   "name": "_rate",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9759,
+                  "scope": 9850,
                   "src": "241:13:118",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -485,7 +485,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9745,
+                    "id": 9836,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "241:7:118",
@@ -499,10 +499,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 9748,
+                  "id": 9839,
                   "name": "_wallet",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9759,
+                  "scope": 9850,
                   "src": "256:23:118",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -511,7 +511,7 @@
                     "typeString": "address payable"
                   },
                   "typeName": {
-                    "id": 9747,
+                    "id": 9838,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "256:15:118",
@@ -526,26 +526,26 @@
                 },
                 {
                   "constant": false,
-                  "id": 9750,
+                  "id": 9841,
                   "name": "_token",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9759,
+                  "scope": 9850,
                   "src": "281:13:118",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_IERC20_$11346",
+                    "typeIdentifier": "t_contract$_IERC20_$11437",
                     "typeString": "contract IERC20"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 9749,
+                    "id": 9840,
                     "name": "IERC20",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 11346,
+                    "referencedDeclaration": 11437,
                     "src": "281:6:118",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IERC20_$11346",
+                      "typeIdentifier": "t_contract$_IERC20_$11437",
                       "typeString": "contract IERC20"
                     }
                   },
@@ -556,19 +556,19 @@
               "src": "240:55:118"
             },
             "returnParameters": {
-              "id": 9757,
+              "id": 9848,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "337:0:118"
             },
-            "scope": 9760,
+            "scope": 9851,
             "src": "228:173:118",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 9761,
+        "scope": 9852,
         "src": "157:246:118"
       }
     ],
@@ -578,14 +578,14 @@
     "absolutePath": "/E/document/blockchain/myprojects/simplevat/contracts/openzeppelin/contracts/mocks/WhitelistCrowdsaleImpl.sol",
     "exportedSymbols": {
       "WhitelistCrowdsaleImpl": [
-        9760
+        9851
       ]
     },
-    "id": 9761,
+    "id": 9852,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 9737,
+        "id": 9828,
         "literals": [
           "solidity",
           "^",
@@ -598,10 +598,10 @@
       {
         "absolutePath": "/E/document/blockchain/myprojects/simplevat/contracts/openzeppelin/contracts/token/ERC20/IERC20.sol",
         "file": "../token/ERC20/IERC20.sol",
-        "id": 9738,
+        "id": 9829,
         "nodeType": "ImportDirective",
-        "scope": 9761,
-        "sourceUnit": 11347,
+        "scope": 9852,
+        "sourceUnit": 11438,
         "src": "25:35:118",
         "symbolAliases": [],
         "unitAlias": ""
@@ -609,10 +609,10 @@
       {
         "absolutePath": "/E/document/blockchain/myprojects/simplevat/contracts/openzeppelin/contracts/crowdsale/validation/WhitelistCrowdsale.sol",
         "file": "../crowdsale/validation/WhitelistCrowdsale.sol",
-        "id": 9739,
+        "id": 9830,
         "nodeType": "ImportDirective",
-        "scope": 9761,
-        "sourceUnit": 4211,
+        "scope": 9852,
+        "sourceUnit": 4302,
         "src": "61:56:118",
         "symbolAliases": [],
         "unitAlias": ""
@@ -620,10 +620,10 @@
       {
         "absolutePath": "/E/document/blockchain/myprojects/simplevat/contracts/openzeppelin/contracts/crowdsale/Crowdsale.sol",
         "file": "../crowdsale/Crowdsale.sol",
-        "id": 9740,
+        "id": 9831,
         "nodeType": "ImportDirective",
-        "scope": 9761,
-        "sourceUnit": 3212,
+        "scope": 9852,
+        "sourceUnit": 3303,
         "src": "118:36:118",
         "symbolAliases": [],
         "unitAlias": ""
@@ -634,17 +634,17 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 9741,
+              "id": 9832,
               "name": "Crowdsale",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 3211,
+              "referencedDeclaration": 3302,
               "src": "192:9:118",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_Crowdsale_$3211",
+                "typeIdentifier": "t_contract$_Crowdsale_$3302",
                 "typeString": "contract Crowdsale"
               }
             },
-            "id": 9742,
+            "id": 9833,
             "nodeType": "InheritanceSpecifier",
             "src": "192:9:118"
           },
@@ -652,54 +652,54 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 9743,
+              "id": 9834,
               "name": "WhitelistCrowdsale",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 4210,
+              "referencedDeclaration": 4301,
               "src": "203:18:118",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_WhitelistCrowdsale_$4210",
+                "typeIdentifier": "t_contract$_WhitelistCrowdsale_$4301",
                 "typeString": "contract WhitelistCrowdsale"
               }
             },
-            "id": 9744,
+            "id": 9835,
             "nodeType": "InheritanceSpecifier",
             "src": "203:18:118"
           }
         ],
         "contractDependencies": [
-          1103,
-          2821,
-          2934,
-          3211,
-          4210,
-          14525
+          1194,
+          2912,
+          3025,
+          3302,
+          4301,
+          14616
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 9760,
+        "id": 9851,
         "linearizedBaseContracts": [
-          9760,
-          4210,
-          3211,
-          14525,
-          2934,
-          2821,
-          1103
+          9851,
+          4301,
+          3302,
+          14616,
+          3025,
+          2912,
+          1194
         ],
         "name": "WhitelistCrowdsaleImpl",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": {
-              "id": 9758,
+              "id": 9849,
               "nodeType": "Block",
               "src": "337:64:118",
               "statements": []
             },
             "documentation": null,
-            "id": 9759,
+            "id": 9850,
             "implemented": true,
             "kind": "constructor",
             "modifiers": [
@@ -707,11 +707,11 @@
                 "arguments": [
                   {
                     "argumentTypes": null,
-                    "id": 9753,
+                    "id": 9844,
                     "name": "_rate",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 9746,
+                    "referencedDeclaration": 9837,
                     "src": "313:5:118",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
@@ -720,11 +720,11 @@
                   },
                   {
                     "argumentTypes": null,
-                    "id": 9754,
+                    "id": 9845,
                     "name": "_wallet",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 9748,
+                    "referencedDeclaration": 9839,
                     "src": "320:7:118",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address_payable",
@@ -733,29 +733,29 @@
                   },
                   {
                     "argumentTypes": null,
-                    "id": 9755,
+                    "id": 9846,
                     "name": "_token",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 9750,
+                    "referencedDeclaration": 9841,
                     "src": "329:6:118",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IERC20_$11346",
+                      "typeIdentifier": "t_contract$_IERC20_$11437",
                       "typeString": "contract IERC20"
                     }
                   }
                 ],
-                "id": 9756,
+                "id": 9847,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 9752,
+                  "id": 9843,
                   "name": "Crowdsale",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 3211,
+                  "referencedDeclaration": 3302,
                   "src": "303:9:118",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_type$_t_contract$_Crowdsale_$3211_$",
+                    "typeIdentifier": "t_type$_t_contract$_Crowdsale_$3302_$",
                     "typeString": "type(contract Crowdsale)"
                   }
                 },
@@ -766,15 +766,15 @@
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9751,
+              "id": 9842,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9746,
+                  "id": 9837,
                   "name": "_rate",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9759,
+                  "scope": 9850,
                   "src": "241:13:118",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -783,7 +783,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9745,
+                    "id": 9836,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "241:7:118",
@@ -797,10 +797,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 9748,
+                  "id": 9839,
                   "name": "_wallet",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9759,
+                  "scope": 9850,
                   "src": "256:23:118",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -809,7 +809,7 @@
                     "typeString": "address payable"
                   },
                   "typeName": {
-                    "id": 9747,
+                    "id": 9838,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "256:15:118",
@@ -824,26 +824,26 @@
                 },
                 {
                   "constant": false,
-                  "id": 9750,
+                  "id": 9841,
                   "name": "_token",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9759,
+                  "scope": 9850,
                   "src": "281:13:118",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_IERC20_$11346",
+                    "typeIdentifier": "t_contract$_IERC20_$11437",
                     "typeString": "contract IERC20"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 9749,
+                    "id": 9840,
                     "name": "IERC20",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 11346,
+                    "referencedDeclaration": 11437,
                     "src": "281:6:118",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IERC20_$11346",
+                      "typeIdentifier": "t_contract$_IERC20_$11437",
                       "typeString": "contract IERC20"
                     }
                   },
@@ -854,19 +854,19 @@
               "src": "240:55:118"
             },
             "returnParameters": {
-              "id": 9757,
+              "id": 9848,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "337:0:118"
             },
-            "scope": 9760,
+            "scope": 9851,
             "src": "228:173:118",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 9761,
+        "scope": 9852,
         "src": "157:246:118"
       }
     ],
@@ -878,7 +878,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.16",
-  "updatedAt": "2019-09-28T08:08:34.189Z",
+  "updatedAt": "2019-10-01T08:31:44.923Z",
   "devdoc": {
     "methods": {
       "buyTokens(address)": {

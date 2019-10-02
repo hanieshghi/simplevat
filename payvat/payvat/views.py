@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from web3.middleware import geth_poa_middleware
 from web3.middleware import pythonic_middleware, attrdict_middleware
 from django.http import HttpResponse
@@ -149,6 +149,20 @@ abi_code = json.loads("""[
       "type": "function"
     },
     {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_pID",
+          "type": "uint256"
+        }
+      ],
+      "name": "setCustomerRecieved",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
       "constant": true,
       "inputs": [
         {
@@ -249,6 +263,10 @@ abi_code = json.loads("""[
         {
           "name": "numberOfTaxUpdate",
           "type": "uint256"
+        },
+        {
+          "name": "customerRecieved",
+          "type": "bool"
         }
       ],
       "payable": false,
@@ -331,6 +349,39 @@ abi_code = json.loads("""[
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getLastPID",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_pID",
+          "type": "uint256"
+        }
+      ],
+      "name": "getCustomerRecieved",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
       "type": "function"
     },
     {
@@ -644,10 +695,11 @@ print(w3.isConnected())
 supply_contract = w3.eth.contract(address=contract_address, abi=abi_code)
 
 # set default account:
-w3.eth.defaultAccount = w3.eth.accounts[3]
+w3.eth.defaultAccount = w3.eth.accounts[4]
 # default account is w3.eth.accounts[0], you can change 0 to 1 to 14 for tests.
 # all accounts are unlocked.
 default_account = w3.eth.defaultAccount
+
 
  
 # supply_contract = w3.eth.contract(abi=abi_code, bytecode=bytecode)
@@ -702,11 +754,11 @@ def updateTaxHistory(_slu, lastPaidTax):
 def purchaseProduct(_pku, _price):
     
     #price_in_wei = w3.toWei(_price, 'ether')
-    print('price' ,_price)
+    #print('price' ,_price)
     
     totalprice = _price + _price * 9/100
-    print('totalprice' ,totalprice)
-    print('INTtotalprice' ,int(totalprice))
+    # print('totalprice' ,totalprice)
+    # print('INTtotalprice' ,int(totalprice))
     #totalprice = w3.fromWei(totalprice_wei,'ether')
     tx = supply_contract.functions.purchaseProduct(
         int(_pku)).transact({'value':  int(totalprice)})
@@ -725,76 +777,194 @@ def fetchTaxHistory(_pku):
     return Product_env_history
 
 def setNewPrice(pID , newPrice):
-    newPrice = w3.toWei(newPrice , 'ether')
+    #newPrice = w3.toWei(newPrice , 'ether')
     tx = supply_contract.functions.setNewPrice(
         int(pID) , int(newPrice)).transact()
-    
     return tx
 
+def setCustomerRecieved(pID):
+    tx = supply_contract.functions.setCustomerRecieved(
+        int(pID)).transact()
+    return tx
+
+def getCustomerRecieved(pID):
+    customerRecieved = supply_contract.functions.getCustomerRecieved(
+        int(pID)).call()
+    return customerRecieved
+
+def getLatestPID():
+    lastPID = supply_contract.functions.getLastPID().call()
+    return lastPID
 # =================================================================
 
 # Create your views here.
 def purchase(request):
-    pID = request.GET['pID']
-    data = fetchProductItemData(pID)
-    price = data[4]
-    purchaseProduct(pID, price)
-    return render(request, 'purchase.html' , {'pID':pID})
 
-def getNewPrice(request):
-    newPrice = request.GET['newPrice']
-    pID = request.GET['pID']
-    setNewPrice(pID , newPrice )
-    return render(request, 'newPrice.html')
+    pdata=last_6_Products(request)
+    txData = getTransactions(request)
 
-def getProducts(request):
-    pID = request.GET['pID']
-    data = fetchProductItemData(pID)
-    name = data[1]
-    currentOwner = data[2]
-    manufacturerId = data[3]
-    price = data[4]/10**18
-    totalPaidTax = data[5]/10**18
-    lastPaidTax = data[6]/10**18
-    numberOfTaxUpdate = data[7]
+    print("asflkjasd;jflkajsdf")
+    newPriceFlag = True
+    if request.method == 'POST':
+        priceChanged = False
+        pID = request.POST['pID']
+        customerRecieved = getCustomerRecieved(pID)
+        print("asflkjasd;jflkajsdf",customerRecieved)
+        if customerRecieved:
+            return render(request, 'home.html' , {'txData':txData,'data':pdata,'msg':'This Product Can not be purchased!'})
 
-    return render(request, 'getProducts.html', {'pID': pID , 'name':name ,
-    'currentOwner':currentOwner , 'manufacturerId': manufacturerId , 'price':price,
-    'totalPaidTax': totalPaidTax , 'lastPaidTax':lastPaidTax , 'numberOfTaxUpdate':numberOfTaxUpdate})
+        data = fetchProductItemData(pID)
+        price = data[4]
 
+        if 'newPrice' in request.POST:
+            newPrice = int(request.POST['newPrice'])
+            newPrice = w3.toWei(newPrice , 'ether')
+            if newPrice < price :
+                return render(request, 'home.html' , {'txData':txData,'data':pdata,'msg':'new Price must be bigger!'})
+            priceChanged = True
+        
+        if not customerRecieved:
+            tx = purchaseProduct(pID, price)
+            
+        
+        if priceChanged:
+            setNewPrice(pID , newPrice )
+        elif not priceChanged:
+            setCustomerRecieved(pID)
+        newPriceFlag = False  
+        pdata=last_6_Products(request)
+        txData = getTransactions(request)
+        return render(request, 'home.html' , {'txData':txData,'data':pdata,'msg':'Purchase was Successfull!','newPriceFlag':newPriceFlag})
+    
+
+
+def last_6_Products(request):
+    data = allProducts(request)
+    return data[:6]
+
+def getProducts(request, product_id):
+    if request.method == 'POST':
+        if request.POST['pID']:
+            product_id = int(request.POST['pID'])
+            return redirect('/product/'+ str(product_id))
+         
+    if request.method == 'GET':
+        data = fetchProductItemData(product_id)
+        name = data[1]
+        currentOwner = data[2]
+        manufacturerId = data[3]
+        price = data[4]/10**18
+        totalPaidTax = data[5]/10**18
+        lastPaidTax = data[6]/10**18
+        numberOfTaxUpdate = data[7]
+        customerRecieved = data[8]
+        return render(request, 'getProducts.html', {'pID': product_id , 'name':name ,
+            'currentOwner':currentOwner , 'manufacturerId': manufacturerId , 'price':price,
+            'totalPaidTax': totalPaidTax , 'lastPaidTax':lastPaidTax , 'numberOfTaxUpdate':numberOfTaxUpdate,'customerRecieved':customerRecieved})
+    else:
+      return render(request, 'home.html' ,{'error':'Enter ID!'})
 
 def generateProduct(request):
-    
-    return render(request, 'generateProduct.html' )
+    if request.method == 'POST':
+      if request.POST['name'] and request.POST['price'] and request.POST['taxPaid']:
+
+        name = request.POST['name']
+        price = request.POST['price']
+        weiPrice = Web3.toWei(price, 'ether')
+        tax = request.POST['taxPaid']
+        weiTax = Web3.toWei(tax, 'ether')
+        manufacturProductsLouds(weiPrice, weiTax, name)
+        pID = getLatestPID()
+        print(pID)
+        return redirect('/product/'+ str(pID)) # '/products/'+ str(product.id))
+        
+      else:
+        return render(request , 'generateProduct.html', {'error':'all fields must be filled!'})
+    else:  
+      return render(request, 'generateProduct.html' )
+
+def allProducts(request):
+    alldata=[]
+    latest = getLatestPID()
+    for pID in range(1,latest+1):
+        sendingData =[]
+        data = fetchProductItemData(pID)
+        sendingData.append(pID)
+        name = data[1]
+        sendingData.append(name)
+        currentOwner = data[2]
+        sendingData.append(currentOwner)
+        manufacturerId = data[3]
+        sendingData.append(manufacturerId)
+        price = data[4]/10**18
+        sendingData.append(price)
+        totalPaidTax = data[5]/10**18
+        sendingData.append(totalPaidTax)
+        lastPaidTax = data[6]/10**18
+        sendingData.append(lastPaidTax)
+        numberOfTaxUpdate = data[7]
+        sendingData.append(numberOfTaxUpdate)
+        customerRecieved = data[8]
+        sendingData.append(customerRecieved)
+
+        alldata.append(sendingData)
+    alldata = sorted(alldata , reverse=True)
+    return alldata
+
+def taxhistory(request ,product_id ):
+    if request.method == 'POST':
+        if request.POST['pID']:
+            product_id = int(request.POST['pID'])
+            return redirect('/taxhistory/'+ str(product_id))
+
+    if request.method == 'GET':
+        taxdata = fetchTaxHistory(product_id)
+        numberOfupdate = taxdata[0]
+        timeStamps = [datetime.fromtimestamp(i).isoformat() for i in taxdata[1]]
+        lastPaidTax = [i/10**18 for i in taxdata[2]]
+        totalTax = taxdata[3][-1]/10**18
+        updaterAddresses = taxdata[4]
+        return render(request, 'taxhistory.html', {'pID': product_id , 'numberOfupdate':numberOfupdate ,
+        'timeStamps':timeStamps , 'lastPaidTax': lastPaidTax , 'totalTax':totalTax,
+        'updaterAddresses': updaterAddresses })
+    else:
+        return render(request, 'home.html' ,{'error':'Enter ID!'})
+
+def getTransactions(request):
+    mylist = []
+    allTX=[]
+    blockNumber = w3.eth.blockNumber
+    txcount = w3.eth.getBlockTransactionCount(blockNumber)
 
 
-def submitproduct(request):
-    name = request.GET['name']
-    price = request.GET['price']
-    weiPrice = Web3.toWei(price, 'ether')
-    tax = request.GET['taxPaid']
-    weiTax = Web3.toWei(tax, 'ether')
-
-    # assignMeAsManufacturer()
-    manufacturProductsLouds(weiPrice, weiTax, name)
-    #manufacturProductsLouds(2, 2, "Name")
-
-    return render(request, 'submitproduct.html')
-
-def taxhistory(request):
-    pID = request.GET['pID']
-    taxdata = fetchTaxHistory(pID)
-
-    numberOfupdate = taxdata[0]
-    timeStamps = [datetime.fromtimestamp(i).isoformat() for i in taxdata[1]]
-    lastPaidTax = [i/10**18 for i in taxdata[2]]
-    totalTax = taxdata[3][-1]/10**18
-    updaterAddresses = taxdata[4]
-
-    return render(request, 'taxhistory.html', {'pID': pID , 'numberOfupdate':numberOfupdate ,
-    'timeStamps':timeStamps , 'lastPaidTax': lastPaidTax , 'totalTax':totalTax,
-    'updaterAddresses': updaterAddresses })
+    data = w3.eth.getBlock(blockNumber)
+    txdata = w3.eth.getTransactionByBlock(blockNumber, 0)
+    txhash = w3.toHex(txdata['hash'])[:40]
+    txfrom = txdata['from']
+    txto = txdata['to']
+    txvalue = txdata['value']
+    mylist = [txhash,txfrom, txto, txvalue]
+    print(txdata)
+    allTX.append(mylist)
+    return allTX
 
 def home(request):
-    request.POST.get('input')
-    return render(request, 'home.html', {'conn': w3.eth.defaultAccount, 'network': HTTPUrl})
+    #request.POST.get('input')
+    data=last_6_Products(request)
+    txData = getTransactions(request)
+    if request.method == 'POST':
+        if "view" in request.POST:
+            return (getProducts(request ,request.POST['pID'] ))
+
+        elif "taxhistory" in request.POST:
+            return (taxhistory(request ,request.POST['pID'] ))
+        
+        elif "purchase" in request.POST:
+            if '1' in request.POST.getlist('customer') or 'newPrice' in request.POST:
+                return (purchase(request ))
+            else:
+                return render(request, 'home.html' ,{'data':data,'txData':txData,'error':'Enter new Price!','newPriceFlag':True})
+
+    else:
+        
+        return render(request, 'home.html', {'txData':txData,'data':data,'conn': w3.eth.defaultAccount, 'network': HTTPUrl})

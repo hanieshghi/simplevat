@@ -102,14 +102,14 @@
     "absolutePath": "/E/document/blockchain/myprojects/simplevat/contracts/openzeppelin/contracts/mocks/CapperRoleMock.sol",
     "exportedSymbols": {
       "CapperRoleMock": [
-        6760
+        6851
       ]
     },
-    "id": 6761,
+    "id": 6852,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 6728,
+        "id": 6819,
         "literals": [
           "solidity",
           "^",
@@ -122,10 +122,10 @@
       {
         "absolutePath": "/E/document/blockchain/myprojects/simplevat/contracts/openzeppelin/contracts/access/roles/CapperRole.sol",
         "file": "../access/roles/CapperRole.sol",
-        "id": 6729,
+        "id": 6820,
         "nodeType": "ImportDirective",
-        "scope": 6761,
-        "sourceUnit": 2394,
+        "scope": 6852,
+        "sourceUnit": 2485,
         "src": "25:40:60",
         "symbolAliases": [],
         "unitAlias": ""
@@ -136,40 +136,40 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 6730,
+              "id": 6821,
               "name": "CapperRole",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 2393,
+              "referencedDeclaration": 2484,
               "src": "94:10:60",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_CapperRole_$2393",
+                "typeIdentifier": "t_contract$_CapperRole_$2484",
                 "typeString": "contract CapperRole"
               }
             },
-            "id": 6731,
+            "id": 6822,
             "nodeType": "InheritanceSpecifier",
             "src": "94:10:60"
           }
         ],
         "contractDependencies": [
-          1103,
-          2393
+          1194,
+          2484
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 6760,
+        "id": 6851,
         "linearizedBaseContracts": [
-          6760,
-          2393,
-          1103
+          6851,
+          2484,
+          1194
         ],
         "name": "CapperRoleMock",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": {
-              "id": 6740,
+              "id": 6831,
               "nodeType": "Block",
               "src": "157:39:60",
               "statements": [
@@ -179,11 +179,11 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 6737,
+                        "id": 6828,
                         "name": "account",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 6733,
+                        "referencedDeclaration": 6824,
                         "src": "181:7:60",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -198,20 +198,20 @@
                           "typeString": "address"
                         }
                       ],
-                      "id": 6736,
+                      "id": 6827,
                       "name": "_removeCapper",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        6759
+                        6850
                       ],
-                      "referencedDeclaration": 6759,
+                      "referencedDeclaration": 6850,
                       "src": "167:13:60",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$__$",
                         "typeString": "function (address)"
                       }
                     },
-                    "id": 6738,
+                    "id": 6829,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -225,29 +225,29 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 6739,
+                  "id": 6830,
                   "nodeType": "ExpressionStatement",
                   "src": "167:22:60"
                 }
               ]
             },
             "documentation": null,
-            "id": 6741,
+            "id": 6832,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "removeCapper",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6734,
+              "id": 6825,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6733,
+                  "id": 6824,
                   "name": "account",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6741,
+                  "scope": 6832,
                   "src": "133:15:60",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -256,7 +256,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 6732,
+                    "id": 6823,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "133:7:60",
@@ -273,12 +273,12 @@
               "src": "132:17:60"
             },
             "returnParameters": {
-              "id": 6735,
+              "id": 6826,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "157:0:60"
             },
-            "scope": 6760,
+            "scope": 6851,
             "src": "111:85:60",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -286,26 +286,26 @@
           },
           {
             "body": {
-              "id": 6746,
+              "id": 6837,
               "nodeType": "Block",
               "src": "251:64:60",
               "statements": []
             },
             "documentation": null,
-            "id": 6747,
+            "id": 6838,
             "implemented": true,
             "kind": "function",
             "modifiers": [
               {
                 "arguments": null,
-                "id": 6744,
+                "id": 6835,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 6743,
+                  "id": 6834,
                   "name": "onlyCapper",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 2326,
+                  "referencedDeclaration": 2417,
                   "src": "240:10:60",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -319,18 +319,18 @@
             "name": "onlyCapperMock",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6742,
+              "id": 6833,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "225:2:60"
             },
             "returnParameters": {
-              "id": 6745,
+              "id": 6836,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "251:0:60"
             },
-            "scope": 6760,
+            "scope": 6851,
             "src": "202:113:60",
             "stateMutability": "view",
             "superFunction": null,
@@ -338,7 +338,7 @@
           },
           {
             "body": {
-              "id": 6758,
+              "id": 6849,
               "nodeType": "Block",
               "src": "443:45:60",
               "statements": [
@@ -348,11 +348,11 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 6755,
+                        "id": 6846,
                         "name": "account",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 6749,
+                        "referencedDeclaration": 6840,
                         "src": "473:7:60",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -369,32 +369,32 @@
                       ],
                       "expression": {
                         "argumentTypes": null,
-                        "id": 6752,
+                        "id": 6843,
                         "name": "super",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 15283,
+                        "referencedDeclaration": 15465,
                         "src": "453:5:60",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_super$_CapperRoleMock_$6760",
+                          "typeIdentifier": "t_super$_CapperRoleMock_$6851",
                           "typeString": "contract super CapperRoleMock"
                         }
                       },
-                      "id": 6754,
+                      "id": 6845,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "_removeCapper",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 2392,
+                      "referencedDeclaration": 2483,
                       "src": "453:19:60",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$__$",
                         "typeString": "function (address)"
                       }
                     },
-                    "id": 6756,
+                    "id": 6847,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -408,29 +408,29 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 6757,
+                  "id": 6848,
                   "nodeType": "ExpressionStatement",
                   "src": "453:28:60"
                 }
               ]
             },
             "documentation": null,
-            "id": 6759,
+            "id": 6850,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "_removeCapper",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6750,
+              "id": 6841,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6749,
+                  "id": 6840,
                   "name": "account",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6759,
+                  "scope": 6850,
                   "src": "417:15:60",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -439,7 +439,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 6748,
+                    "id": 6839,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "417:7:60",
@@ -456,19 +456,19 @@
               "src": "416:17:60"
             },
             "returnParameters": {
-              "id": 6751,
+              "id": 6842,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "443:0:60"
             },
-            "scope": 6760,
+            "scope": 6851,
             "src": "394:94:60",
             "stateMutability": "nonpayable",
-            "superFunction": 2392,
+            "superFunction": 2483,
             "visibility": "internal"
           }
         ],
-        "scope": 6761,
+        "scope": 6852,
         "src": "67:423:60"
       }
     ],
@@ -478,14 +478,14 @@
     "absolutePath": "/E/document/blockchain/myprojects/simplevat/contracts/openzeppelin/contracts/mocks/CapperRoleMock.sol",
     "exportedSymbols": {
       "CapperRoleMock": [
-        6760
+        6851
       ]
     },
-    "id": 6761,
+    "id": 6852,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 6728,
+        "id": 6819,
         "literals": [
           "solidity",
           "^",
@@ -498,10 +498,10 @@
       {
         "absolutePath": "/E/document/blockchain/myprojects/simplevat/contracts/openzeppelin/contracts/access/roles/CapperRole.sol",
         "file": "../access/roles/CapperRole.sol",
-        "id": 6729,
+        "id": 6820,
         "nodeType": "ImportDirective",
-        "scope": 6761,
-        "sourceUnit": 2394,
+        "scope": 6852,
+        "sourceUnit": 2485,
         "src": "25:40:60",
         "symbolAliases": [],
         "unitAlias": ""
@@ -512,40 +512,40 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 6730,
+              "id": 6821,
               "name": "CapperRole",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 2393,
+              "referencedDeclaration": 2484,
               "src": "94:10:60",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_CapperRole_$2393",
+                "typeIdentifier": "t_contract$_CapperRole_$2484",
                 "typeString": "contract CapperRole"
               }
             },
-            "id": 6731,
+            "id": 6822,
             "nodeType": "InheritanceSpecifier",
             "src": "94:10:60"
           }
         ],
         "contractDependencies": [
-          1103,
-          2393
+          1194,
+          2484
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 6760,
+        "id": 6851,
         "linearizedBaseContracts": [
-          6760,
-          2393,
-          1103
+          6851,
+          2484,
+          1194
         ],
         "name": "CapperRoleMock",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": {
-              "id": 6740,
+              "id": 6831,
               "nodeType": "Block",
               "src": "157:39:60",
               "statements": [
@@ -555,11 +555,11 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 6737,
+                        "id": 6828,
                         "name": "account",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 6733,
+                        "referencedDeclaration": 6824,
                         "src": "181:7:60",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -574,20 +574,20 @@
                           "typeString": "address"
                         }
                       ],
-                      "id": 6736,
+                      "id": 6827,
                       "name": "_removeCapper",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        6759
+                        6850
                       ],
-                      "referencedDeclaration": 6759,
+                      "referencedDeclaration": 6850,
                       "src": "167:13:60",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$__$",
                         "typeString": "function (address)"
                       }
                     },
-                    "id": 6738,
+                    "id": 6829,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -601,29 +601,29 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 6739,
+                  "id": 6830,
                   "nodeType": "ExpressionStatement",
                   "src": "167:22:60"
                 }
               ]
             },
             "documentation": null,
-            "id": 6741,
+            "id": 6832,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "removeCapper",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6734,
+              "id": 6825,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6733,
+                  "id": 6824,
                   "name": "account",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6741,
+                  "scope": 6832,
                   "src": "133:15:60",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -632,7 +632,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 6732,
+                    "id": 6823,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "133:7:60",
@@ -649,12 +649,12 @@
               "src": "132:17:60"
             },
             "returnParameters": {
-              "id": 6735,
+              "id": 6826,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "157:0:60"
             },
-            "scope": 6760,
+            "scope": 6851,
             "src": "111:85:60",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -662,26 +662,26 @@
           },
           {
             "body": {
-              "id": 6746,
+              "id": 6837,
               "nodeType": "Block",
               "src": "251:64:60",
               "statements": []
             },
             "documentation": null,
-            "id": 6747,
+            "id": 6838,
             "implemented": true,
             "kind": "function",
             "modifiers": [
               {
                 "arguments": null,
-                "id": 6744,
+                "id": 6835,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 6743,
+                  "id": 6834,
                   "name": "onlyCapper",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 2326,
+                  "referencedDeclaration": 2417,
                   "src": "240:10:60",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -695,18 +695,18 @@
             "name": "onlyCapperMock",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6742,
+              "id": 6833,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "225:2:60"
             },
             "returnParameters": {
-              "id": 6745,
+              "id": 6836,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "251:0:60"
             },
-            "scope": 6760,
+            "scope": 6851,
             "src": "202:113:60",
             "stateMutability": "view",
             "superFunction": null,
@@ -714,7 +714,7 @@
           },
           {
             "body": {
-              "id": 6758,
+              "id": 6849,
               "nodeType": "Block",
               "src": "443:45:60",
               "statements": [
@@ -724,11 +724,11 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 6755,
+                        "id": 6846,
                         "name": "account",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 6749,
+                        "referencedDeclaration": 6840,
                         "src": "473:7:60",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -745,32 +745,32 @@
                       ],
                       "expression": {
                         "argumentTypes": null,
-                        "id": 6752,
+                        "id": 6843,
                         "name": "super",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 15283,
+                        "referencedDeclaration": 15465,
                         "src": "453:5:60",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_super$_CapperRoleMock_$6760",
+                          "typeIdentifier": "t_super$_CapperRoleMock_$6851",
                           "typeString": "contract super CapperRoleMock"
                         }
                       },
-                      "id": 6754,
+                      "id": 6845,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "_removeCapper",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 2392,
+                      "referencedDeclaration": 2483,
                       "src": "453:19:60",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$__$",
                         "typeString": "function (address)"
                       }
                     },
-                    "id": 6756,
+                    "id": 6847,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -784,29 +784,29 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 6757,
+                  "id": 6848,
                   "nodeType": "ExpressionStatement",
                   "src": "453:28:60"
                 }
               ]
             },
             "documentation": null,
-            "id": 6759,
+            "id": 6850,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "_removeCapper",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6750,
+              "id": 6841,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6749,
+                  "id": 6840,
                   "name": "account",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6759,
+                  "scope": 6850,
                   "src": "417:15:60",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -815,7 +815,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 6748,
+                    "id": 6839,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "417:7:60",
@@ -832,19 +832,19 @@
               "src": "416:17:60"
             },
             "returnParameters": {
-              "id": 6751,
+              "id": 6842,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "443:0:60"
             },
-            "scope": 6760,
+            "scope": 6851,
             "src": "394:94:60",
             "stateMutability": "nonpayable",
-            "superFunction": 2392,
+            "superFunction": 2483,
             "visibility": "internal"
           }
         ],
-        "scope": 6761,
+        "scope": 6852,
         "src": "67:423:60"
       }
     ],
@@ -856,7 +856,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.16",
-  "updatedAt": "2019-09-28T09:14:29.117Z",
+  "updatedAt": "2019-10-02T05:35:30.320Z",
   "devdoc": {
     "methods": {}
   },

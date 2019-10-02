@@ -3,7 +3,7 @@ pragma solidity ^0.5.0;
 contract Product {
 
     uint pID;
-
+    uint counter = 0;
     mapping (uint => ProductItem) pItems;
 
     enum ProductState {
@@ -30,6 +30,7 @@ contract Product {
         uint price;
         mapping(uint => TaxUpdateOpj) taxHistory;
         uint taxUpdateCounter;
+        bool customerRecieved;
     }
 
     /// Event to emit them for users in functions, accept `pID` as input as stock expected
@@ -74,6 +75,10 @@ contract Product {
         _;
     }
 
+    modifier isNotCustomerRecieved(uint _pID){
+        require(pItems[_pID].customerRecieved != true);
+        _;
+    }
     /// Constructor Function sets up pID and pID to 0
     constructor() public {
         pID = 0;
@@ -91,9 +96,10 @@ contract Product {
         newProductItem.taxUpdateCounter = 0;
         newProductItem.price = _price;
         newProductItem.name = _name;
+        newProductItem.customerRecieved = false;
         pItems[_pID] = newProductItem;
         updateTaxHistory(_pID , _tax);
-        
+        counter++;
         //newProductItem.taxUpdateCounter = pItems[_pID].taxUpdateCounter ;
         emit Manufactured(_pID);
     }
@@ -102,6 +108,7 @@ contract Product {
         public
         payable
         isProductTaxTracked(_pID)
+        isNotCustomerRecieved(_pID)
     {
         pItems[_pID].state = ProductState.Purchased;
         pItems[_pID].currentOwnerId = msg.sender;
@@ -112,6 +119,20 @@ contract Product {
     function setNewPrice(uint _pID,uint newPrice) public onlyOwnerOf(_pID){
         require( _pID != 0, 'Given pID Not Created Yet!');
         pItems[_pID].price = newPrice;
+    }
+
+    function setCustomerRecieved(uint _pID) public onlyOwnerOf(_pID){
+        require( _pID != 0, 'Given pID Not Created Yet!');
+        pItems[_pID].customerRecieved = true;
+    }
+
+    function getCustomerRecieved(uint _pID) public view returns(bool){
+        require( _pID != 0, 'Given pID Not Created Yet!');
+        return (pItems[_pID].customerRecieved);
+    }
+
+    function getLastPID() public view returns(uint){
+        return counter ;
     }
 
     function fetchProductItemData(uint _pID)
@@ -126,7 +147,8 @@ contract Product {
             uint price,
             uint totalTax,
             uint lastPaidTax,
-            uint numberOfTaxUpdate
+            uint numberOfTaxUpdate,
+            bool customerRecieved
         )
     {
         require( _pID != 0, 'Given pID Not Created Yet!');
@@ -139,6 +161,7 @@ contract Product {
         numberOfTaxUpdate = _ProductItem.taxUpdateCounter;
         totalTax = _ProductItem.taxHistory[numberOfTaxUpdate-1].totalTax;
         lastPaidTax = _ProductItem.taxHistory[numberOfTaxUpdate-1].lastPaidTax;
+        customerRecieved = _ProductItem.customerRecieved;
     }
 
 

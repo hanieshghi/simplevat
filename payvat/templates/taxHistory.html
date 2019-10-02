@@ -1,4 +1,14 @@
 
+{% extends 'base.html' %}
+
+{%block content%}
+
+{% if error %}
+    {{error}}
+    <br/>
+    <br/>
+{% endif %}
+<h1>Tax History of product number {{pID}} </h1>
 <br />
 <table border="2" , align="center">
     <th colspan="2">product Tax History</th>
@@ -28,6 +38,12 @@
     </tr>
 </table>
 <br/>
-<a href="{% url 'home' %}">return to home page </a>
 
 {{data}}
+
+{% endblock %}
+
+
+
+
+

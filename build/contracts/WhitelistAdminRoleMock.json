@@ -102,14 +102,14 @@
     "absolutePath": "/E/document/blockchain/myprojects/simplevat/contracts/openzeppelin/contracts/mocks/WhitelistAdminRoleMock.sol",
     "exportedSymbols": {
       "WhitelistAdminRoleMock": [
-        9735
+        9826
       ]
     },
-    "id": 9736,
+    "id": 9827,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 9703,
+        "id": 9794,
         "literals": [
           "solidity",
           "^",
@@ -122,10 +122,10 @@
       {
         "absolutePath": "/E/document/blockchain/myprojects/simplevat/contracts/openzeppelin/contracts/access/roles/WhitelistAdminRole.sol",
         "file": "../access/roles/WhitelistAdminRole.sol",
-        "id": 9704,
+        "id": 9795,
         "nodeType": "ImportDirective",
-        "scope": 9736,
-        "sourceUnit": 2822,
+        "scope": 9827,
+        "sourceUnit": 2913,
         "src": "25:48:117",
         "symbolAliases": [],
         "unitAlias": ""
@@ -136,40 +136,40 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 9705,
+              "id": 9796,
               "name": "WhitelistAdminRole",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 2821,
+              "referencedDeclaration": 2912,
               "src": "110:18:117",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_WhitelistAdminRole_$2821",
+                "typeIdentifier": "t_contract$_WhitelistAdminRole_$2912",
                 "typeString": "contract WhitelistAdminRole"
               }
             },
-            "id": 9706,
+            "id": 9797,
             "nodeType": "InheritanceSpecifier",
             "src": "110:18:117"
           }
         ],
         "contractDependencies": [
-          1103,
-          2821
+          1194,
+          2912
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 9735,
+        "id": 9826,
         "linearizedBaseContracts": [
-          9735,
-          2821,
-          1103
+          9826,
+          2912,
+          1194
         ],
         "name": "WhitelistAdminRoleMock",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": {
-              "id": 9715,
+              "id": 9806,
               "nodeType": "Block",
               "src": "189:47:117",
               "statements": [
@@ -179,11 +179,11 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 9712,
+                        "id": 9803,
                         "name": "account",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 9708,
+                        "referencedDeclaration": 9799,
                         "src": "221:7:117",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -198,20 +198,20 @@
                           "typeString": "address"
                         }
                       ],
-                      "id": 9711,
+                      "id": 9802,
                       "name": "_removeWhitelistAdmin",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        9734
+                        9825
                       ],
-                      "referencedDeclaration": 9734,
+                      "referencedDeclaration": 9825,
                       "src": "199:21:117",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$__$",
                         "typeString": "function (address)"
                       }
                     },
-                    "id": 9713,
+                    "id": 9804,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -225,29 +225,29 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 9714,
+                  "id": 9805,
                   "nodeType": "ExpressionStatement",
                   "src": "199:30:117"
                 }
               ]
             },
             "documentation": null,
-            "id": 9716,
+            "id": 9807,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "removeWhitelistAdmin",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9709,
+              "id": 9800,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9708,
+                  "id": 9799,
                   "name": "account",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9716,
+                  "scope": 9807,
                   "src": "165:15:117",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -256,7 +256,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 9707,
+                    "id": 9798,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "165:7:117",
@@ -273,12 +273,12 @@
               "src": "164:17:117"
             },
             "returnParameters": {
-              "id": 9710,
+              "id": 9801,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "189:0:117"
             },
-            "scope": 9735,
+            "scope": 9826,
             "src": "135:101:117",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -286,26 +286,26 @@
           },
           {
             "body": {
-              "id": 9721,
+              "id": 9812,
               "nodeType": "Block",
               "src": "307:64:117",
               "statements": []
             },
             "documentation": null,
-            "id": 9722,
+            "id": 9813,
             "implemented": true,
             "kind": "function",
             "modifiers": [
               {
                 "arguments": null,
-                "id": 9719,
+                "id": 9810,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 9718,
+                  "id": 9809,
                   "name": "onlyWhitelistAdmin",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 2754,
+                  "referencedDeclaration": 2845,
                   "src": "288:18:117",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -319,18 +319,18 @@
             "name": "onlyWhitelistAdminMock",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9717,
+              "id": 9808,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "273:2:117"
             },
             "returnParameters": {
-              "id": 9720,
+              "id": 9811,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "307:0:117"
             },
-            "scope": 9735,
+            "scope": 9826,
             "src": "242:129:117",
             "stateMutability": "view",
             "superFunction": null,
@@ -338,7 +338,7 @@
           },
           {
             "body": {
-              "id": 9733,
+              "id": 9824,
               "nodeType": "Block",
               "src": "515:53:117",
               "statements": [
@@ -348,11 +348,11 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 9730,
+                        "id": 9821,
                         "name": "account",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 9724,
+                        "referencedDeclaration": 9815,
                         "src": "553:7:117",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -369,32 +369,32 @@
                       ],
                       "expression": {
                         "argumentTypes": null,
-                        "id": 9727,
+                        "id": 9818,
                         "name": "super",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 15445,
+                        "referencedDeclaration": 15627,
                         "src": "525:5:117",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_super$_WhitelistAdminRoleMock_$9735",
+                          "typeIdentifier": "t_super$_WhitelistAdminRoleMock_$9826",
                           "typeString": "contract super WhitelistAdminRoleMock"
                         }
                       },
-                      "id": 9729,
+                      "id": 9820,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "_removeWhitelistAdmin",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 2820,
+                      "referencedDeclaration": 2911,
                       "src": "525:27:117",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$__$",
                         "typeString": "function (address)"
                       }
                     },
-                    "id": 9731,
+                    "id": 9822,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -408,29 +408,29 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 9732,
+                  "id": 9823,
                   "nodeType": "ExpressionStatement",
                   "src": "525:36:117"
                 }
               ]
             },
             "documentation": null,
-            "id": 9734,
+            "id": 9825,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "_removeWhitelistAdmin",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9725,
+              "id": 9816,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9724,
+                  "id": 9815,
                   "name": "account",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9734,
+                  "scope": 9825,
                   "src": "489:15:117",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -439,7 +439,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 9723,
+                    "id": 9814,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "489:7:117",
@@ -456,19 +456,19 @@
               "src": "488:17:117"
             },
             "returnParameters": {
-              "id": 9726,
+              "id": 9817,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "515:0:117"
             },
-            "scope": 9735,
+            "scope": 9826,
             "src": "458:110:117",
             "stateMutability": "nonpayable",
-            "superFunction": 2820,
+            "superFunction": 2911,
             "visibility": "internal"
           }
         ],
-        "scope": 9736,
+        "scope": 9827,
         "src": "75:495:117"
       }
     ],
@@ -478,14 +478,14 @@
     "absolutePath": "/E/document/blockchain/myprojects/simplevat/contracts/openzeppelin/contracts/mocks/WhitelistAdminRoleMock.sol",
     "exportedSymbols": {
       "WhitelistAdminRoleMock": [
-        9735
+        9826
       ]
     },
-    "id": 9736,
+    "id": 9827,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 9703,
+        "id": 9794,
         "literals": [
           "solidity",
           "^",
@@ -498,10 +498,10 @@
       {
         "absolutePath": "/E/document/blockchain/myprojects/simplevat/contracts/openzeppelin/contracts/access/roles/WhitelistAdminRole.sol",
         "file": "../access/roles/WhitelistAdminRole.sol",
-        "id": 9704,
+        "id": 9795,
         "nodeType": "ImportDirective",
-        "scope": 9736,
-        "sourceUnit": 2822,
+        "scope": 9827,
+        "sourceUnit": 2913,
         "src": "25:48:117",
         "symbolAliases": [],
         "unitAlias": ""
@@ -512,40 +512,40 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 9705,
+              "id": 9796,
               "name": "WhitelistAdminRole",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 2821,
+              "referencedDeclaration": 2912,
               "src": "110:18:117",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_WhitelistAdminRole_$2821",
+                "typeIdentifier": "t_contract$_WhitelistAdminRole_$2912",
                 "typeString": "contract WhitelistAdminRole"
               }
             },
-            "id": 9706,
+            "id": 9797,
             "nodeType": "InheritanceSpecifier",
             "src": "110:18:117"
           }
         ],
         "contractDependencies": [
-          1103,
-          2821
+          1194,
+          2912
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 9735,
+        "id": 9826,
         "linearizedBaseContracts": [
-          9735,
-          2821,
-          1103
+          9826,
+          2912,
+          1194
         ],
         "name": "WhitelistAdminRoleMock",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": {
-              "id": 9715,
+              "id": 9806,
               "nodeType": "Block",
               "src": "189:47:117",
               "statements": [
@@ -555,11 +555,11 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 9712,
+                        "id": 9803,
                         "name": "account",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 9708,
+                        "referencedDeclaration": 9799,
                         "src": "221:7:117",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -574,20 +574,20 @@
                           "typeString": "address"
                         }
                       ],
-                      "id": 9711,
+                      "id": 9802,
                       "name": "_removeWhitelistAdmin",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        9734
+                        9825
                       ],
-                      "referencedDeclaration": 9734,
+                      "referencedDeclaration": 9825,
                       "src": "199:21:117",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$__$",
                         "typeString": "function (address)"
                       }
                     },
-                    "id": 9713,
+                    "id": 9804,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -601,29 +601,29 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 9714,
+                  "id": 9805,
                   "nodeType": "ExpressionStatement",
                   "src": "199:30:117"
                 }
               ]
             },
             "documentation": null,
-            "id": 9716,
+            "id": 9807,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "removeWhitelistAdmin",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9709,
+              "id": 9800,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9708,
+                  "id": 9799,
                   "name": "account",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9716,
+                  "scope": 9807,
                   "src": "165:15:117",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -632,7 +632,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 9707,
+                    "id": 9798,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "165:7:117",
@@ -649,12 +649,12 @@
               "src": "164:17:117"
             },
             "returnParameters": {
-              "id": 9710,
+              "id": 9801,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "189:0:117"
             },
-            "scope": 9735,
+            "scope": 9826,
             "src": "135:101:117",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -662,26 +662,26 @@
           },
           {
             "body": {
-              "id": 9721,
+              "id": 9812,
               "nodeType": "Block",
               "src": "307:64:117",
               "statements": []
             },
             "documentation": null,
-            "id": 9722,
+            "id": 9813,
             "implemented": true,
             "kind": "function",
             "modifiers": [
               {
                 "arguments": null,
-                "id": 9719,
+                "id": 9810,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 9718,
+                  "id": 9809,
                   "name": "onlyWhitelistAdmin",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 2754,
+                  "referencedDeclaration": 2845,
                   "src": "288:18:117",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -695,18 +695,18 @@
             "name": "onlyWhitelistAdminMock",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9717,
+              "id": 9808,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "273:2:117"
             },
             "returnParameters": {
-              "id": 9720,
+              "id": 9811,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "307:0:117"
             },
-            "scope": 9735,
+            "scope": 9826,
             "src": "242:129:117",
             "stateMutability": "view",
             "superFunction": null,
@@ -714,7 +714,7 @@
           },
           {
             "body": {
-              "id": 9733,
+              "id": 9824,
               "nodeType": "Block",
               "src": "515:53:117",
               "statements": [
@@ -724,11 +724,11 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 9730,
+                        "id": 9821,
                         "name": "account",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 9724,
+                        "referencedDeclaration": 9815,
                         "src": "553:7:117",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -745,32 +745,32 @@
                       ],
                       "expression": {
                         "argumentTypes": null,
-                        "id": 9727,
+                        "id": 9818,
                         "name": "super",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 15445,
+                        "referencedDeclaration": 15627,
                         "src": "525:5:117",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_super$_WhitelistAdminRoleMock_$9735",
+                          "typeIdentifier": "t_super$_WhitelistAdminRoleMock_$9826",
                           "typeString": "contract super WhitelistAdminRoleMock"
                         }
                       },
-                      "id": 9729,
+                      "id": 9820,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "_removeWhitelistAdmin",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 2820,
+                      "referencedDeclaration": 2911,
                       "src": "525:27:117",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$__$",
                         "typeString": "function (address)"
                       }
                     },
-                    "id": 9731,
+                    "id": 9822,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -784,29 +784,29 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 9732,
+                  "id": 9823,
                   "nodeType": "ExpressionStatement",
                   "src": "525:36:117"
                 }
               ]
             },
             "documentation": null,
-            "id": 9734,
+            "id": 9825,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "_removeWhitelistAdmin",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9725,
+              "id": 9816,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9724,
+                  "id": 9815,
                   "name": "account",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9734,
+                  "scope": 9825,
                   "src": "489:15:117",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -815,7 +815,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 9723,
+                    "id": 9814,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "489:7:117",
@@ -832,19 +832,19 @@
               "src": "488:17:117"
             },
             "returnParameters": {
-              "id": 9726,
+              "id": 9817,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "515:0:117"
             },
-            "scope": 9735,
+            "scope": 9826,
             "src": "458:110:117",
             "stateMutability": "nonpayable",
-            "superFunction": 2820,
+            "superFunction": 2911,
             "visibility": "internal"
           }
         ],
-        "scope": 9736,
+        "scope": 9827,
         "src": "75:495:117"
       }
     ],
@@ -856,7 +856,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.16",
-  "updatedAt": "2019-09-28T08:08:34.185Z",
+  "updatedAt": "2019-10-01T08:31:44.919Z",
   "devdoc": {
     "methods": {}
   },

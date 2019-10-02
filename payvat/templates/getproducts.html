@@ -1,4 +1,13 @@
 
+{% extends 'base.html' %}
+
+{%block content%}
+
+{% if error %}
+    {{error}}
+    <br/>
+    <br/>
+{% endif %}
 <br />
 <table border="2" , align="center">
     <th colspan="2">product information</th>
@@ -34,8 +43,23 @@
         <td align="center">manufacturer Id</td>
         <td align="center"> {{manufacturerId}} </td>
     </tr>
+    <tr>
+        <td align="center">customer Recieved</td>
+        <td align="center"> {{customerRecieved}} </td>
+    </tr>
 </table>
 <br/>
-<a href="{% url 'home' %}">return to home page </a>
 
-{{data}}
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+

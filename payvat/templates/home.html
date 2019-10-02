@@ -1,22 +1,121 @@
-<div style="background-color: #116444; height:300px;width:500px " align="center">
-    <h1 >What do you want to Do?</h1>
-    <br />
-    <br />
-    <form action = "{% url 'purchase' %}" >
-        <br />
-        <input type="text" name="pID" placeholder="Enter pID"></input>
-        <input type="submit" value="Purchase" style="height:20px;width:100px"></input>
-    </form>
-    <form action = "{% url 'taxhistory' %}" >
+{% extends 'base.html' %}
+{% block content %}
 
-        <input type="number" name="pID" placeholder="Enter pID"></input>
-        <input type="submit" value="Tax History" style="height:20px;width:100px"></input>
-    </form>
-    <form action = "{% url 'getProducts' %}" method="GET">
-        <input type="text" name="pID" placeholder="Enter pID"></input>
-        <input type="submit" value="getProducts" style="height:20px;width:100px"></input>
-    </form>
-    <form action = "{% url 'generateProduct' %}">
-        <input type="submit" value="generateProduct" ></input>
-    </form>
+{%if error%}
+    {{error}}
+{%endif%}
+
+
+{% if msg %}
+    {{msg}}
+{%endif%}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+
+                <div class="container">
+                    <h2>Quick Access</h2>
+                    <p>Enter Product Id and then click one of the buttons.</p>
+
+                    <form class="form-group" action={% url 'home' %} method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <label for="pID" class="mb-2 mr-sm-2">ID:</label>
+                        <input type="number" class="form-control mb-2 mr-sm-2" id="pID" placeholder="Enter ID" name="pID" required>  
+
+                        {% if not newPriceFlag%}
+                        <div class="form-group form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" name="customer" value="1" > I am Customer!
+                            </label>
+                        </div>
+                        {%endif%}
+
+                        {%if newPriceFlag%}
+                        <div class="form-group">
+                            <label for="newPrice">newPrice:</label>
+                            <input type="number" class="form-control" id="newPrice" name="newPrice" required>
+                        </div>
+                        {%endif%}
+
+                    <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group ">
+                              <button type="submit" class="btn  btn-primary mb-2 mr-sm-2" name="view" >View details</button>
+                              <button type="submit" class="btn  btn-secondary mb-2 mr-sm-2" name="taxhistory">VAT History</button>
+                              <button type="submit" class="btn btn-danger mb-2 mr-sm-2" name="purchase">Purchase</button>
+                            </div>
+                            
+                    </div>
+
+                    </form>
+                </div>
+
+        </div>
+        <div class="col-md-6">
+            <div class="container">
+                <h4>Last TX</h4>
+                {%for hash , from , to , value in txData%}
+                <div class="row pt-3" >
+                    <div class="col-md" >
+                        <p> tx Hash: {{hash}} </p>
+                        <p> from: {{from}} </p>
+                        <p> to: {{to}} </p>
+                        <p> value: {{value}} </p>
+                    </div>
+                </div>
+
+                {%endfor%}
+                
+            </div>
+        </div>
+    </div>
 </div>
+
+
+
+<hr/>
+
+
+
+<div class="album py-5 bg-light">
+    <div class="container">
+        <h3 class="pb-3 text-center" >Latest Products</h3>
+        <div class="row">
+            {% for pID,name,currentOwner,manufacturerId,price,totalTax,lastPaidTax,numberOfTaxUpdate,customerRecieved  in data %}
+            <div class="col-sm-4" >
+                    <div class="card mb-4 shadow-sm">
+                            <div class="card-header" onclick=window.location='{% url "getProducts" pID %}'; style="cursor:pointer;">
+                              <h4 class="my-0 font-weight-normal">{{name}}</h4>
+                            </div>
+                            <div class="card-body" >
+                              <h1 class="card-title pricing-card-title" onclick=window.location='{% url "getProducts" pID %}'; style="cursor:pointer;">${{price}} <small class="text-muted">/ ETH</small></h1>
+                              <ul class="list-unstyled mt-3 mb-4" onclick=window.location='{% url "getProducts" pID %}'; style="cursor:pointer;">
+                                <li>ID: {{pID}}</li>
+                                <li>Total Paid VAT: {{totalTax}} ETH</li>
+                                                                
+                                <li>currentOwner: {{currentOwner}} </li>
+                                {%if customerRecieved%}
+                                <li style="background-color: rgb(255, 233, 31)">Has been purchased by customer!</li>
+                                {%endif%}
+
+                                {%if not customerRecieved%}
+                                <li>Has not been purchased!</li>
+                                {%endif%}
+
+                              </ul>
+                              <a href="javascript:{document.getElementById('taxhistory{{pID}}').submit()}"><button type="button" class="btn btn-lg btn-block btn-primary">View VAT History</button></a>
+                            </div>
+                          </div>
+            </div>  
+            <form id='taxhistory{{pID}}' method="GET" action='{% url "taxhistory" pID %}'>
+                    {%csrf_token%}
+                    <input type="hidden">
+            </form>
+            {% endfor %}
+        </div>
+        
+        
+    </div>
+</div>
+
+{% endblock %}
