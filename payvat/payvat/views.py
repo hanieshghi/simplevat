@@ -1,4 +1,5 @@
 from django.shortcuts import render,redirect
+from django.core.paginator import Paginator
 from web3.middleware import geth_poa_middleware
 from web3.middleware import pythonic_middleware, attrdict_middleware
 from django.http import HttpResponse
@@ -695,7 +696,7 @@ print(w3.isConnected())
 supply_contract = w3.eth.contract(address=contract_address, abi=abi_code)
 
 # set default account:
-w3.eth.defaultAccount = w3.eth.accounts[4]
+w3.eth.defaultAccount = w3.eth.accounts[6]
 # default account is w3.eth.accounts[0], you can change 0 to 1 to 14 for tests.
 # all accounts are unlocked.
 default_account = w3.eth.defaultAccount
@@ -811,7 +812,7 @@ def purchase(request):
         customerRecieved = getCustomerRecieved(pID)
         print("asflkjasd;jflkajsdf",customerRecieved)
         if customerRecieved:
-            return render(request, 'home.html' , {'txData':txData,'data':pdata,'msg':'This Product Can not be purchased!'})
+            return render(request, 'home.html' , {'txData':txData,'data':pdata,'error':'This Product Can not be purchased!'})
 
         data = fetchProductItemData(pID)
         price = data[4]
@@ -820,7 +821,7 @@ def purchase(request):
             newPrice = int(request.POST['newPrice'])
             newPrice = w3.toWei(newPrice , 'ether')
             if newPrice < price :
-                return render(request, 'home.html' , {'txData':txData,'data':pdata,'msg':'new Price must be bigger!'})
+                return render(request, 'home.html' , {'txData':txData,'data':pdata,'error':'new Price must be bigger!'})
             priceChanged = True
         
         if not customerRecieved:
@@ -835,9 +836,7 @@ def purchase(request):
         pdata=last_6_Products(request)
         txData = getTransactions(request)
         return render(request, 'home.html' , {'txData':txData,'data':pdata,'msg':'Purchase was Successfull!','newPriceFlag':newPriceFlag})
-    
-
-
+   
 def last_6_Products(request):
     data = allProducts(request)
     return data[:6]
@@ -911,6 +910,14 @@ def allProducts(request):
     alldata = sorted(alldata , reverse=True)
     return alldata
 
+def products(request):
+    allproducts = allProducts(request)
+    paginator = Paginator(allproducts, 9) # Show 12 contacts per page
+
+    page = request.GET.get('page')
+    products = paginator.get_page(page)
+    return render(request, 'products.html', {'data': products})
+
 def taxhistory(request ,product_id ):
     if request.method == 'POST':
         if request.POST['pID']:
@@ -939,11 +946,12 @@ def getTransactions(request):
 
     data = w3.eth.getBlock(blockNumber)
     txdata = w3.eth.getTransactionByBlock(blockNumber, 0)
+    
     txhash = w3.toHex(txdata['hash'])[:40]
     txfrom = txdata['from']
     txto = txdata['to']
-    txvalue = txdata['value']
-    mylist = [txhash,txfrom, txto, txvalue]
+    #txvalue = txdata['value']
+    mylist = [txhash,txfrom, txto]
     print(txdata)
     allTX.append(mylist)
     return allTX

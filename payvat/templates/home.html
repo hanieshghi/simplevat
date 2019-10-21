@@ -1,13 +1,21 @@
 {% extends 'base.html' %}
 {% block content %}
-
+<br/>
 {%if error%}
-    {{error}}
+    <div class="container">
+        <div class="alert alert-danger" role="alert">
+            {{error}}
+        </div>
+    </div>
+    
+    
 {%endif%}
 
 
 {% if msg %}
+<div class="alert alert-success" role="alert">
     {{msg}}
+  </div>
 {%endif%}
 
 <div class="container">
@@ -41,7 +49,7 @@
                     <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group ">
                               <button type="submit" class="btn  btn-primary mb-2 mr-sm-2" name="view" >View details</button>
-                              <button type="submit" class="btn  btn-secondary mb-2 mr-sm-2" name="taxhistory">VAT History</button>
+                              <button type="submit" class="btn  btn-warning mb-2 mr-sm-2" name="taxhistory">VAT History</button>
                               <button type="submit" class="btn btn-danger mb-2 mr-sm-2" name="purchase">Purchase</button>
                             </div>
                             
@@ -54,13 +62,13 @@
         <div class="col-md-6">
             <div class="container">
                 <h4>Last TX</h4>
-                {%for hash , from , to , value in txData%}
+                {%for hash , from , to  in txData%}
                 <div class="row pt-3" >
                     <div class="col-md" >
                         <p> tx Hash: {{hash}} </p>
                         <p> from: {{from}} </p>
                         <p> to: {{to}} </p>
-                        <p> value: {{value}} </p>
+                        <!-- <p> value: {{value}} </p> -->
                     </div>
                 </div>
 
@@ -90,16 +98,16 @@
                             <div class="card-body" >
                               <h1 class="card-title pricing-card-title" onclick=window.location='{% url "getProducts" pID %}'; style="cursor:pointer;">${{price}} <small class="text-muted">/ ETH</small></h1>
                               <ul class="list-unstyled mt-3 mb-4" onclick=window.location='{% url "getProducts" pID %}'; style="cursor:pointer;">
-                                <li>ID: {{pID}}</li>
-                                <li>Total Paid VAT: {{totalTax}} ETH</li>
+                                <li><b>ID: </b>{{pID}}</li>
+                                <li><b>Total Paid VAT:</b> {{totalTax}} ETH</li>
                                                                 
-                                <li>currentOwner: {{currentOwner}} </li>
+                                <li><b>currentOwner:</b> {{currentOwner}} </li>
                                 {%if customerRecieved%}
-                                <li style="background-color: rgb(255, 233, 31)">Has been purchased by customer!</li>
+                                <li style="background-color: rgb(255, 233, 31)"><b>purchased by customer!</b></li>
                                 {%endif%}
 
                                 {%if not customerRecieved%}
-                                <li>Has not been purchased!</li>
+                                <li><b>Not purchased!</b></li>
                                 {%endif%}
 
                               </ul>

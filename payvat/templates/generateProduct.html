@@ -8,7 +8,7 @@
     <br/>
 {% endif %}
 
-<h1>Create</h1>
+<h3>Enter your Product information:</h3>
 <form action={% url 'generateProduct' %} method="POST" enctype="multipart/form-data">
     {% csrf_token %}
 
@@ -20,7 +20,7 @@
     <br/>
     <input type="number" name="price"></input>
     <br/>
-    Paid Tax:
+    Paid Tax for material:
     <br/>
     <input type="number" name="taxPaid"></input>
     <br/>

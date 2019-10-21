@@ -27,5 +27,6 @@ urlpatterns = [
     #path('submitproduct/', views.submitproduct, name ='submitproduct'),
     #path('newPrice/', views.getNewPrice, name ='newPrice'),
     path('taxhistory/<int:product_id>/', views.taxhistory, name ='taxhistory'),
+    path('products/', views.products, name ='products'),
     
 ]
